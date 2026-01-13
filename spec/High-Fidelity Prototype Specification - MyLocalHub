@@ -1,0 +1,65 @@
+High-Fidelity Prototype Specification: MyLocalHub
+1. General InformationThe prototype is a multi-file web application (SPA interface using vanilla JS) designed to simulate a mobile-first experience.
+ The primary focus is on visual identity, interface warmth, and user retention mechanisms.
+
+Language Requirement: All user interface elements, mock data, console logs, and code comments must be written strictly in English.
+2. Visual Strategy and PaletteThe design aims to evoke a sense of trust and local belonging.
+Color Scheme:Background: #FAF7F3 (Off-white/Parchment) — A warm background to reduce eye strain.
+Primary Text: #2B2B2B (Graphite) — Soft black for high legibility.
+Metadata/Secondary: #AAAAAA (Silver) — For supporting information (opening hours, distance).
+Primary Accent: #C65A3A (Rosy Copper) — The main color for buttons and primary actions, associated with terracotta and craftsmanship.
+Secondary Accent: #2F6F6D (Teal) — Represents calmness and the sea (connection to Larnaca), used for contrast.
+Rewards/Gold: #F2C94C (Tuscan Sun) — For achievement indicators and loyalty points.
+Typography: SF Pro font family (or an equivalent humanist sans-serif).
+ Headings should be Bold, while body text is Regular.
+Graphics: Corner radius — 16px.
+ Icons — Thin, rounded line icons.
+ Use real photos instead of stock imagery to enhance authenticity.
+3.
+ Screen Architecture3.
+1.
+ Explore (Home)Header: Greeting "Hello, [User Name]!" and a search bar.
+Categories: Horizontal scroll (Food & Drink, Crafts, Beauty, Leisure).
+Shop Cards: Cards featuring a photo, rating, and a mandatory promotion tag (e.
+g.
+, "BOGO" or "-30%").
+Social Proof: Text below cards such as "120 people visited this week".
+3.
+2.
+ Shop DetailHero Section: High-quality photo of the shop (e.
+g.
+, Georgios' Seaside Kiosk).
+Promo Block: An accented section in Rosy Copper color describing the current offer.
+Interaction: Primary buttons for "View Shop" and "Join Event".
+3.
+3.
+ EventsList: Cards for upcoming community activities (craft fairs, workshops).
+Style: Teal-themed design to distinguish events from commercial offers.
+3.
+4.
+ Rewards (Loyalty)Points View: A large gold widget displaying the current point balance.
+Progress: A progress bar with text like "You're close to a free coffee!".
+QR Access: A button to trigger a modal window with a QR code for in-store scanning.
+3.
+5.
+ ProfileImpact: A reflective block stating "You've supported 12 local businesses this month".
+Badges: A grid of earned achievements ("Local Hero", "Explorer").
+4.
+ Emotional and Persuasive Interaction (HCI)Positive Feedback: Trigger a short confetti animation upon earning points or claiming a reward.
+UI Language: Friendly and engaging tone.
+ Use "Thank you for supporting local!" instead of generic "Operation complete".
+Persuasion: Implement "Streaks" (consecutive visit days) and "Your reward expires soon" notifications.
+Reflective Level: Monthly impact summaries to foster a sense of pride and community contribution.
+5.
+ Technical Project Structureindex.
+html: App container, includes Bootstrap 5 and Google Fonts.
+css/style.
+css: Custom CSS variables for the palette and card styling.
+js/app.
+js: Main navigation controller (SPA) and component rendering logic.
+js/mocks/:shops.
+js: Data for businesses (including Georgios' kiosk).
+events.
+js: List of community events.
+user.
+js: User state (points, history, badges).
