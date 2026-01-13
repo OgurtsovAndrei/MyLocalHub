@@ -5,11 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
 let currentViewMode = 'list';
 let mapInstance = null;
 let markersMap = {};
+let currentDateFilter = null;
 
 function initApp() {
     renderSection('explore');
     setupNavigation();
 }
+
+// Global hook for calendar month change
+window.updateCalendar = function(date) {
+    const appContainer = document.getElementById('app-content');
+    renderExplore(appContainer, currentFilter, currentTypeFilter, currentDateFilter, date);
+};
 
 function setupNavigation() {
     const navItems = document.querySelectorAll('.nav-item');
@@ -48,18 +55,32 @@ function renderSection(section) {
 let currentFilter = 'All';
 let currentTypeFilter = 'All';
 
-function toggleViewMode() {
-    currentViewMode = currentViewMode === 'list' ? 'map' : 'list';
+function setViewMode(mode) {
+    if (currentViewMode === mode) {
+        currentViewMode = 'list';
+    } else {
+        currentViewMode = mode;
+    }
     const appContainer = document.getElementById('app-content');
     if (appContainer) {
-        renderExplore(appContainer, currentFilter, currentTypeFilter);
+        renderExplore(appContainer, currentFilter, currentTypeFilter, currentDateFilter);
     }
 }
 
-function renderExplore(container, filter = 'All', typeFilter = 'All') {
+function toggleViewMode() {
+    setViewMode('map');
+}
+
+function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter = null, calendarViewDate = null) {
     currentFilter = filter;
     currentTypeFilter = typeFilter;
+    currentDateFilter = dateFilter;
     
+    // Reset view mode if not available for current type
+    if (currentViewMode === 'calendar' && typeFilter !== 'event') {
+        currentViewMode = 'list';
+    }
+
     const allData = [...SHOPS_DATA, ...EVENTS_DATA];
     
     // Dynamic categories based on current type filter
@@ -79,9 +100,14 @@ function renderExplore(container, filter = 'All', typeFilter = 'All') {
         </div>
         
         <div class="d-flex align-items-center mb-4 gap-2">
-            <button class="btn-map-toggle ${currentViewMode === 'map' ? 'active' : ''}" onclick="toggleViewMode()" title="Toggle Map">
-                <i data-lucide="${currentViewMode === 'map' ? 'list' : 'map'}"></i>
+            <button class="btn-map-toggle ${currentViewMode === 'map' ? 'active' : ''}" onclick="setViewMode('map')" title="Toggle Map">
+                <i data-lucide="map"></i>
             </button>
+            ${typeFilter === 'event' ? `
+            <button class="btn-map-toggle ${currentViewMode === 'calendar' ? 'active' : ''}" onclick="setViewMode('calendar')" title="Toggle Calendar" style="background-color: var(--secondary-color)">
+                <i data-lucide="calendar"></i>
+            </button>
+            ` : ''}
             <div class="search-bar mb-0 flex-grow-1">
                 <i data-lucide="search" size="20"></i>
                 <input type="text" placeholder="Search places or events...">
@@ -99,7 +125,10 @@ function renderExplore(container, filter = 'All', typeFilter = 'All') {
                 <div class="category-item ${filter === cat ? 'active' : ''}" onclick="renderExplore(document.getElementById('app-content'), '${cat}', '${typeFilter}')">${cat}</div>
             `).join('')}
         </div>
-        <h4 class="fw-bold mb-3">${filter === 'All' ? (typeFilter === 'All' ? 'Everything' : (typeFilter === 'place' ? 'Featured Places' : 'Upcoming Events')) : filter}</h4>
+        <h4 class="fw-bold mb-3">
+            ${dateFilter ? `Events on ${dateFilter.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}` : 
+              (filter === 'All' ? (typeFilter === 'All' ? 'Everything' : (typeFilter === 'place' ? 'Featured Places' : 'Upcoming Events')) : filter)}
+        </h4>
     `;
     container.innerHTML = header;
 
@@ -110,8 +139,45 @@ function renderExplore(container, filter = 'All', typeFilter = 'All') {
     if (filter !== 'All') {
         filteredItems = filteredItems.filter(item => item.category === filter);
     }
+    if (dateFilter && typeFilter === 'event') {
+        filteredItems = filteredItems.filter(item => {
+            const d = new Date(item.date);
+            return d.getDate() === dateFilter.getDate() && 
+                   d.getMonth() === dateFilter.getMonth() && 
+                   d.getFullYear() === dateFilter.getFullYear();
+        });
+    }
 
-    if (currentViewMode === 'map') {
+    if (currentViewMode === 'calendar' && typeFilter === 'event') {
+        const exploreContent = document.createElement('div');
+        exploreContent.className = 'explore-split-view animate__animated animate__fadeIn';
+
+        const listSide = document.createElement('div');
+        listSide.className = 'explore-list-side';
+        renderItems(listSide, filteredItems);
+        
+        const calSide = document.createElement('div');
+        calSide.className = 'explore-map-side'; // Reuse map side styling
+        const calDiv = document.createElement('div');
+        calDiv.id = 'calendar-mount';
+        calSide.appendChild(calDiv);
+        
+        // In mobile view, we might want to swap order or stack them differently
+        // For now, let's keep list on left/top and calendar on right/bottom (stack on mobile)
+        if (window.innerWidth < 992) {
+            exploreContent.appendChild(calSide);
+            exploreContent.appendChild(listSide);
+        } else {
+            exploreContent.appendChild(listSide);
+            exploreContent.appendChild(calSide);
+        }
+        
+        container.appendChild(exploreContent);
+        
+        Calendar.render(calDiv, EVENTS_DATA, dateFilter || calendarViewDate, (date) => {
+            renderExplore(document.getElementById('app-content'), filter, typeFilter, date);
+        });
+    } else if (currentViewMode === 'map') {
         const exploreContent = document.createElement('div');
         exploreContent.className = 'explore-split-view animate__animated animate__fadeIn';
 
