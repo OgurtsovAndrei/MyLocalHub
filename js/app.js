@@ -174,7 +174,7 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
         
         container.appendChild(exploreContent);
         
-        Calendar.render(calDiv, EVENTS_DATA, dateFilter || calendarViewDate, (date) => {
+        Calendar.render(calDiv, EVENTS_DATA, calendarViewDate, dateFilter, (date) => {
             renderExplore(document.getElementById('app-content'), filter, typeFilter, date);
         });
     } else if (currentViewMode === 'map') {
