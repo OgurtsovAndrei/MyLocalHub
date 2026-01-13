@@ -5,8 +5,11 @@ const EVENTS_DATA = [
         date: "Jan 20, 2026",
         location: "Phinikoudes Square",
         category: "Community",
+        type: "event",
         image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=400",
-        description: "Join us for a celebration of local artisans and handmade goods."
+        description: "Join us for a celebration of local artisans and handmade goods.",
+        lat: 34.9125,
+        lng: 33.6375
     },
     {
         id: 2,
@@ -14,8 +17,11 @@ const EVENTS_DATA = [
         date: "Jan 25, 2026",
         location: "Local Hub Center",
         category: "Education",
+        type: "event",
         image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=400",
-        description: "Learn traditional weaving techniques from our community elders."
+        description: "Learn traditional weaving techniques from our community elders.",
+        lat: 34.9160,
+        lng: 33.6295
     },
     {
         id: 3,
@@ -23,7 +29,118 @@ const EVENTS_DATA = [
         date: "Feb 01, 2026",
         location: "Mackenzie Beach",
         category: "Volunteering",
+        type: "event",
         image: "https://images.unsplash.com/photo-1618477461853-cf6ed80fafa5?auto=format&fit=crop&q=80&w=400",
-        description: "Keep our beaches beautiful. Refreshments provided for all volunteers."
+        description: "Keep our beaches beautiful. Refreshments provided for all volunteers.",
+        lat: 34.8950,
+        lng: 33.6355
+    },
+    {
+        id: 4,
+        title: "Sunset Yoga Session",
+        date: "Feb 05, 2026",
+        location: "Finikoudes Beach",
+        category: "Health",
+        type: "event",
+        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=400",
+        description: "Free community yoga session as the sun sets over the Mediterranean.",
+        lat: 34.9105,
+        lng: 33.6385
+    },
+    {
+        id: 5,
+        title: "Local Music Night",
+        date: "Feb 12, 2026",
+        location: "Old Town Square",
+        category: "Entertainment",
+        type: "event",
+        image: "https://images.unsplash.com/photo-1514525253344-f814d873e28a?auto=format&fit=crop&q=80&w=400",
+        description: "Enjoy live performances from Larnaca's emerging musicians.",
+        lat: 34.9145,
+        lng: 33.6325
+    },
+    {
+        id: 6,
+        title: "Farmers Market",
+        date: "Feb 15, 2026",
+        location: "St. Lazarus Square",
+        category: "Food & Drink",
+        type: "event",
+        image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80&w=400",
+        description: "Fresh produce directly from our local farmers. Support local agriculture!",
+        lat: 34.9150,
+        lng: 33.6345
+    },
+    {
+        id: 7,
+        title: "Larnaca Heritage Walk",
+        date: "Feb 20, 2026",
+        location: "Old Town",
+        category: "Community",
+        type: "event",
+        image: "https://images.unsplash.com/photo-1517457373958-b7bdd458ad20?auto=format&fit=crop&q=80&w=400",
+        description: "Discover the hidden history of our beautiful city with local guides.",
+        lat: 34.9130,
+        lng: 33.6315
+    },
+    {
+        id: 8,
+        title: "Sustainable Living Workshop",
+        date: "Feb 22, 2026",
+        location: "Community Center",
+        category: "Education",
+        type: "event",
+        image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=400",
+        description: "Practical tips for reducing waste and living more eco-friendly.",
+        lat: 34.9165,
+        lng: 33.6295
+    },
+    {
+        id: 9,
+        title: "Animal Shelter Day",
+        date: "Feb 28, 2026",
+        location: "Larnaca Animal Hope",
+        category: "Volunteering",
+        type: "event",
+        image: "https://images.unsplash.com/photo-1541944743827-e04aa6427c33?auto=format&fit=crop&q=80&w=400",
+        description: "Spend a day helping out at our local animal shelter. All help welcome!",
+        lat: 34.9450,
+        lng: 33.6005
+    },
+    {
+        id: 10,
+        title: "Beach Pilates",
+        date: "Mar 05, 2026",
+        location: "Mackenzie Beach",
+        category: "Health",
+        type: "event",
+        image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=400",
+        description: "Start your morning with a refreshing Pilates session by the sea.",
+        lat: 34.8955,
+        lng: 33.6355
+    },
+    {
+        id: 11,
+        title: "Theater in the Park",
+        date: "Mar 10, 2026",
+        location: "Municipal Gardens",
+        category: "Entertainment",
+        type: "event",
+        image: "https://images.unsplash.com/photo-1503095396549-807a89010049?auto=format&fit=crop&q=80&w=400",
+        description: "A magical outdoor performance by the local drama troupe.",
+        lat: 34.9205,
+        lng: 33.6305
+    },
+    {
+        id: 12,
+        title: "Traditional Cooking Class",
+        date: "Mar 15, 2026",
+        location: "Maria's Kitchen",
+        category: "Food & Drink",
+        type: "event",
+        image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=400",
+        description: "Learn to make authentic Cypriot dishes from scratch.",
+        lat: 34.9175,
+        lng: 33.6275
     }
 ];

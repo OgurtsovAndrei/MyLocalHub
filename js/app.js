@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initApp();
 });
 
+let currentViewMode = 'list';
+let mapInstance = null;
+let markersMap = {};
+
 function initApp() {
     renderSection('explore');
     setupNavigation();
@@ -31,9 +35,6 @@ function renderSection(section) {
         case 'explore':
             renderExplore(appContainer);
             break;
-        case 'events':
-            renderEvents(appContainer);
-            break;
         case 'rewards':
             renderRewards(appContainer);
             break;
@@ -44,77 +45,227 @@ function renderSection(section) {
     lucide.createIcons();
 }
 
-function renderExplore(container) {
+let currentFilter = 'All';
+let currentTypeFilter = 'All';
+
+function toggleViewMode() {
+    currentViewMode = currentViewMode === 'list' ? 'map' : 'list';
+    const appContainer = document.getElementById('app-content');
+    if (appContainer) {
+        renderExplore(appContainer, currentFilter, currentTypeFilter);
+    }
+}
+
+function renderExplore(container, filter = 'All', typeFilter = 'All') {
+    currentFilter = filter;
+    currentTypeFilter = typeFilter;
+    
+    const allData = [...SHOPS_DATA, ...EVENTS_DATA];
+    
+    // Dynamic categories based on current type filter
+    let categories = ['All'];
+    if (typeFilter === 'place') {
+        categories.push(...new Set(SHOPS_DATA.map(s => s.category)));
+    } else if (typeFilter === 'event') {
+        categories.push(...new Set(EVENTS_DATA.map(e => e.category)));
+    } else {
+        categories.push(...new Set(allData.map(i => i.category)));
+    }
+    
     const header = `
         <div class="mb-4">
             <h2 class="fw-bold">Hello, ${USER_DATA.name}!</h2>
-            <p class="text-muted">Find amazing local shops</p>
+            <p class="text-muted">Explore your local community</p>
         </div>
-        <div class="search-bar">
-            <i data-lucide="search" size="20"></i>
-            <input type="text" placeholder="Search shops, crafts...">
+        
+        <div class="d-flex align-items-center mb-4 gap-2">
+            <button class="btn-map-toggle ${currentViewMode === 'map' ? 'active' : ''}" onclick="toggleViewMode()" title="Toggle Map">
+                <i data-lucide="${currentViewMode === 'map' ? 'list' : 'map'}"></i>
+            </button>
+            <div class="search-bar mb-0 flex-grow-1">
+                <i data-lucide="search" size="20"></i>
+                <input type="text" placeholder="Search places or events...">
+            </div>
         </div>
+
+        <div class="d-flex gap-2 mb-3">
+            <button class="btn btn-sm ${typeFilter === 'All' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'All')">All</button>
+            <button class="btn btn-sm ${typeFilter === 'place' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'place')">Places</button>
+            <button class="btn btn-sm ${typeFilter === 'event' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'event')">Events</button>
+        </div>
+
         <div class="category-scroll mb-4">
-            <div class="category-item">All</div>
-            <div class="category-item">Food & Drink</div>
-            <div class="category-item">Crafts</div>
-            <div class="category-item">Beauty</div>
-            <div class="category-item">Leisure</div>
+            ${categories.map(cat => `
+                <div class="category-item ${filter === cat ? 'active' : ''}" onclick="renderExplore(document.getElementById('app-content'), '${cat}', '${typeFilter}')">${cat}</div>
+            `).join('')}
         </div>
-        <h4 class="fw-bold mb-3">Featured Shops</h4>
+        <h4 class="fw-bold mb-3">${filter === 'All' ? (typeFilter === 'All' ? 'Everything' : (typeFilter === 'place' ? 'Featured Places' : 'Upcoming Events')) : filter}</h4>
     `;
     container.innerHTML = header;
 
-    const shopList = document.createElement('div');
-    SHOPS_DATA.forEach(shop => {
-        const card = `
-            <div class="card card-custom">
-                <img src="${shop.image}" class="card-img-top" alt="${shop.name}">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h5 class="card-title fw-bold mb-0">${shop.name}</h5>
-                        <span class="promo-badge">${shop.promotion}</span>
+    let filteredItems = allData;
+    if (typeFilter !== 'All') {
+        filteredItems = filteredItems.filter(item => item.type === typeFilter);
+    }
+    if (filter !== 'All') {
+        filteredItems = filteredItems.filter(item => item.category === filter);
+    }
+
+    if (currentViewMode === 'map') {
+        const exploreContent = document.createElement('div');
+        exploreContent.className = 'explore-split-view animate__animated animate__fadeIn';
+
+        const listSide = document.createElement('div');
+        listSide.className = 'explore-list-side d-none d-lg-block';
+        renderItems(listSide, filteredItems);
+        
+        const mapSide = document.createElement('div');
+        mapSide.className = 'explore-map-side';
+        const mapDiv = document.createElement('div');
+        mapDiv.id = 'map-container';
+        mapSide.appendChild(mapDiv);
+        
+        exploreContent.appendChild(listSide);
+        exploreContent.appendChild(mapSide);
+        container.appendChild(exploreContent);
+        
+        initMap(filteredItems);
+    } else {
+        const itemGrid = document.createElement('div');
+        itemGrid.className = 'shop-grid';
+        renderItems(itemGrid, filteredItems);
+        container.appendChild(itemGrid);
+    }
+    lucide.createIcons();
+}
+
+function renderItems(container, items) {
+    if (items.length === 0) {
+        container.innerHTML = `
+            <div class="text-center my-5 animate__animated animate__fadeIn w-100">
+                <i data-lucide="info" size="48" class="text-muted mb-3"></i>
+                <p class="text-muted">No results found for this selection.</p>
+                <button class="btn btn-link text-accent" onclick="renderExplore(document.getElementById('app-content'), 'All', 'All')">Reset filters</button>
+            </div>
+        `;
+    } else {
+        items.forEach(item => {
+            const isPlace = item.type === 'place';
+            const cardId = `item-card-${item.type}-${item.id}`;
+            const card = `
+                <div class="card card-custom ${!isPlace ? 'event-card' : ''} animate__animated animate__fadeIn" id="${cardId}" onclick="handleItemClick('${item.type}', ${item.id}, event)" style="cursor: pointer">
+                    <img src="${item.image}" class="card-img-top" alt="${isPlace ? item.name : item.title}">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title fw-bold mb-0">${isPlace ? item.name : item.title}</h5>
+                            ${isPlace ? `<span class="promo-badge">${item.promotion}</span>` : `<span class="badge" style="background-color: var(--secondary-color); color: #fff; border-radius: 20px; font-size: 0.7rem;">${item.category}</span>`}
+                        </div>
+                        <p class="text-muted small mb-2">
+                            ${isPlace ? `${item.category} • ★ ${item.rating}` : `<i data-lucide="calendar" size="14" class="d-inline"></i> ${item.date}`}
+                        </p>
+                        <p class="small text-secondary mb-3">
+                            ${isPlace ? `${item.visits} people visited this week` : `<i data-lucide="map-pin" size="14" class="d-inline"></i> ${item.location}`}
+                        </p>
+                        <button class="btn btn-primary-custom" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showToast('Registered!')`}">
+                            ${isPlace ? 'View Place' : 'Join Event'}
+                        </button>
                     </div>
-                    <p class="text-muted small mb-2">${shop.category} • ★ ${shop.rating}</p>
-                    <p class="small text-secondary mb-3">${shop.visits} people visited this week</p>
-                    <button class="btn btn-primary-custom" onclick="showShopDetail(${shop.id})">View Shop</button>
                 </div>
-            </div>
-        `;
-        shopList.innerHTML += card;
-    });
-    container.appendChild(shopList);
+            `;
+            container.innerHTML += card;
+        });
+    }
+    lucide.createIcons();
 }
 
-function renderEvents(container) {
-    const header = `
-        <div class="mb-4">
-            <h2 class="fw-bold">Local Events</h2>
-            <p class="text-muted">Connect with your community</p>
-        </div>
-    `;
-    container.innerHTML = header;
+function handleItemClick(type, id, event) {
+    if (event.target.closest('button')) return;
 
-    const eventList = document.createElement('div');
-    EVENTS_DATA.forEach(event => {
-        const card = `
-            <div class="card card-custom event-card">
-                <img src="${event.image}" class="card-img-top" alt="${event.title}">
-                <div class="card-body">
-                    <p class="text-uppercase small fw-bold text-teal mb-1" style="color: var(--secondary-color)">${event.category}</p>
-                    <h5 class="card-title fw-bold">${event.title}</h5>
-                    <p class="text-muted small mb-3">
-                        <i data-lucide="calendar" size="14" class="d-inline"></i> ${event.date} | 
-                        <i data-lucide="map-pin" size="14" class="d-inline"></i> ${event.location}
-                    </p>
-                    <button class="btn btn-primary-custom" style="background-color: var(--secondary-color)" onclick="showToast('Registered!')">Join Event</button>
-                </div>
-            </div>
-        `;
-        eventList.innerHTML += card;
-    });
-    container.appendChild(eventList);
+    if (currentViewMode === 'map' && window.innerWidth >= 992) {
+        focusItemOnMap(type, id);
+        highlightItemInList(type, id);
+    } else {
+        if (type === 'place') {
+            showShopDetail(id);
+        } else {
+            showToast('Opening event details...');
+        }
+    }
 }
+
+function focusItemOnMap(type, id) {
+    const markerKey = `${type}-${id}`;
+    const marker = markersMap[markerKey];
+    if (marker && mapInstance) {
+        mapInstance.setView(marker.getLatLng(), 16);
+        marker.openPopup();
+    }
+}
+
+function highlightItemInList(type, id, scroll = false) {
+    document.querySelectorAll('.card-custom').forEach(card => card.classList.remove('highlight-card'));
+    
+    const card = document.getElementById(`item-card-${type}-${id}`);
+    if (card) {
+        card.classList.add('highlight-card');
+        if (scroll) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+}
+
+function initMap(items) {
+    // Delay to ensure DOM element is ready
+    setTimeout(() => {
+        if (mapInstance) {
+            mapInstance.remove();
+        }
+
+        markersMap = {};
+
+        // Larnaca coordinates
+        mapInstance = L.map('map-container', {
+            zoomControl: false
+        }).setView([34.915, 33.633], 14);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(mapInstance);
+
+        L.control.zoom({
+            position: 'bottomright'
+        }).addTo(mapInstance);
+
+        items.forEach(item => {
+            const isPlace = item.type === 'place';
+            const popupContent = `
+                <div class="map-popup-card">
+                    <img src="${item.image}" alt="${isPlace ? item.name : item.title}">
+                    <div class="map-popup-content">
+                        <h6 class="fw-bold mb-1">${isPlace ? item.name : item.title}</h6>
+                        <p class="small text-muted mb-2">
+                            ${isPlace ? `${item.category} • ★ ${item.rating}` : `<i data-lucide="calendar" size="12"></i> ${item.date}`}
+                        </p>
+                        <button class="btn btn-primary-custom btn-sm py-1" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showToast('Registered!')`}">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            const marker = L.marker([item.lat, item.lng]).addTo(mapInstance);
+            marker.bindPopup(popupContent);
+            markersMap[`${item.type}-${item.id}`] = marker;
+
+            marker.on('click', () => {
+                if (currentViewMode === 'map' && window.innerWidth >= 992) {
+                    highlightItemInList(item.type, item.id, true);
+                }
+            });
+        });
+    }, 100);
+}
+
 
 function renderRewards(container) {
     const content = `
