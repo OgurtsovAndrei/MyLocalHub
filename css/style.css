@@ -200,9 +200,9 @@ body {
 }
 
 .btn-map-toggle {
-    background: var(--accent-color);
-    color: #fff;
-    border: none;
+    background: #fff;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
     border-radius: 12px;
     width: 46px;
     height: 46px;
@@ -219,7 +219,8 @@ body {
 }
 
 .btn-map-toggle.active {
-    background: var(--secondary-color);
+    background: var(--accent-color);
+    color: #fff;
 }
 
 .shop-grid {

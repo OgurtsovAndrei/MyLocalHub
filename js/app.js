@@ -67,6 +67,13 @@ function setViewMode(mode) {
     }
 }
 
+function handleCalendarClick() {
+    if (currentTypeFilter === 'All') {
+        currentTypeFilter = 'event';
+    }
+    setViewMode('calendar');
+}
+
 function toggleViewMode() {
     setViewMode('map');
 }
@@ -103,8 +110,8 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
             <button class="btn-map-toggle ${currentViewMode === 'map' ? 'active' : ''}" onclick="setViewMode('map')" title="Toggle Map">
                 <i data-lucide="map"></i>
             </button>
-            ${typeFilter === 'event' ? `
-            <button class="btn-map-toggle ${currentViewMode === 'calendar' ? 'active' : ''}" onclick="setViewMode('calendar')" title="Toggle Calendar" style="background-color: var(--secondary-color)">
+            ${(typeFilter === 'event' || typeFilter === 'All') ? `
+            <button class="btn-map-toggle ${currentViewMode === 'calendar' ? 'active' : ''}" onclick="handleCalendarClick()" title="Toggle Calendar">
                 <i data-lucide="calendar"></i>
             </button>
             ` : ''}
