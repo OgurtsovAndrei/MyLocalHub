@@ -1,0 +1,32 @@
+function showShopDetail(shopId) {
+    const shop = SHOPS_DATA.find(s => s.id === shopId);
+    if (!shop) return;
+
+    const appContainer = document.getElementById('app-content');
+    appContainer.innerHTML = `
+        <div class="mb-3">
+            <button class="btn btn-link p-0 text-decoration-none text-dark" onclick="renderSection('explore')">
+                <i data-lucide="arrow-left" size="20"></i> Back to Explore
+            </button>
+        </div>
+        <div class="card card-custom">
+            <img src="${shop.image}" class="card-img-top" style="height: 250px" alt="${shop.name}">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h2 class="fw-bold mb-0">${shop.name}</h2>
+                    <span class="promo-badge">${shop.promotion}</span>
+                </div>
+                <p class="text-muted">${shop.category} • ★ ${shop.rating}</p>
+                <div class="p-3 mb-3 rounded-3" style="background-color: #FFF0ED; border: 1px solid var(--accent-color)">
+                    <h6 class="fw-bold text-accent" style="color: var(--accent-color)">Exclusive Offer</h6>
+                    <p class="mb-0 small">${shop.promotion}. Show your QR code at the counter to claim.</p>
+                </div>
+                <p class="mb-4">${shop.description}</p>
+                <button class="btn btn-primary-custom mb-2" onclick="showToast('Shared!')">Share with Friends</button>
+                <button class="btn btn-outline-secondary w-100" style="border-radius: 12px; padding: 12px" onclick="renderSection('explore')">Close</button>
+            </div>
+        </div>
+    `;
+    lucide.createIcons();
+    window.scrollTo(0,0);
+}
