@@ -1,0 +1,538 @@
+CSE11 HUMAN COMPUTER
+INTERACTION
+Coursework Specification
+October 2025 – January 2026
+Dr Avgousta Kyriakidou Zacharoudiou
+Assessment Information
+An electronic copy of your work for this coursework must be fully uploaded on the Deadline
+Date of SUNDAY 18/01/2026 by 23:55pm using the link on the coursework Moodle page
+for DIS503.
+Edit course: [CSE11-EN_F25] Human Computer Interaction | NUP
+▪ For this coursework, you must submit a single Acrobat PDF document. You must
+also upload a single ZIP file containing supporting evidence i.e. your high-fidelity
+prototype. Please remember that there are limits on the size of the file – please check
+Moodle for more information.
+▪ Any files uploaded on Moodle, should be free of any viruses and please ensure that
+these are not protected by a password. Otherwise, the submission will be treated as null.
+▪ The work will be marked online and feedback on your work and your final mark will
+be made available on Moodle.
+▪ Your lecturer will inform you when feedback and marks are released on Moodle.
+▪ Please refer to your programme handbook for details on Assessment Regulations,
+including details of penalties for late submission, procedures for Extenuating
+Circumstances, and penalties for Assessment Offences.
+1
+Dr Avgousta Kyriakidou Zacharoudiou
+Coursework specification
+MyLocalHub: Revitalising the Local Economy Through a Community-
+Driven Mobile App
+Over the past decade, the City Council of Larnaka has been facing a growing concern shared
+by many European cities: the gradual decline of small, independent businesses in the face of
+aggressive competition from large retail chains and the rapid rise of e-commerce platforms.
+Once-vibrant neighbourhoods filled with family-owned bakeries, artisan cafés, handmade
+crafts, traditional shops, and local service providers have slowly witnessed decreasing foot
+traffic. The impact has been felt not only economically but also socially, as local commerce
+has traditionally played a crucial role in shaping neighbourhood identity, strengthening
+community ties, and supporting the city’s cultural character.
+Local shop owners report a consistent pattern: customers rarely discover their stores unless
+they happen to walk past them. Printed flyers and posters have limited reach, word-of-mouth
+marketing has weakened, and most businesses lack the digital skills or budget needed to
+maintain an online presence. The situation worsened during the pandemic years, after which
+many small businesses never regained their usual customer volume. A recent survey conducted
+by the City Council revealed that 62% of residents were unaware of the variety of local shops
+available in their own neighbourhood, and 57% stated that they would support local businesses
+more if there were convenient digital loyalty programmes instead of paper-based stamp cards
+that are often lost or forgotten.
+Recognising these challenges, the City Council has partnered with the Local Business
+Association to launch MyLocalHub, an ambitious initiative designed to modernise the
+relationship between citizens and the small businesses in their city. MyLocalHub is envisioned
+as a mobile application that would act as a centralised digital platform through which residents,
+visitors, and business owners can interact more meaningfully. The Council aims for the app to
+become the primary gateway for discovering neighbourhood shops, receiving personalised
+offers, attending local events, and collecting digital rewards that incentivise community
+engagement.
+At the heart of MyLocalHub is the belief that local commerce is more than economic activity—
+it's part of the social fabric of the city. The Council hopes that by improving digital visibility
+and offering innovative engagement tools, residents will rediscover the value of supporting
+2
+Dr Avgousta Kyriakidou Zacharoudiou
+their local community. The app is intended to run on recent operating systems (Android 15 and
+iOS 17) and will incorporate modern UX principles to ensure that even users who are not
+technologically confident can navigate it easily.
+The application is expected to provide a smooth and engaging experience from the moment
+users open it. Citizens should be able to browse shops based on categories such as food and
+drink, crafts, beauty, professional services, and leisure. Each business will have its own profile,
+featuring photos, opening hours, specialities, and customer reviews. Importantly, the Council
+wants the app to feel warm, personal, and community-focused, rather than corporate or
+transactional.
+Functionality of the New Mobile App:
+The application is expected to provide a smooth and engaging experience from the moment
+users open it.
+▪ Citizens should be able to browse shops based on categories such as food and drink,
+crafts, beauty, professional services, and leisure.
+▪ Each business will have its own profile, featuring photos, opening hours, specialities,
+and customer reviews. Importantly, the Council wants the app to feel warm, personal,
+and community-focused, rather than corporate or transactional.
+▪ A key feature of MyLocalHub is its digital loyalty and rewards system. Most small
+businesses currently rely on physical stamp cards, which are frequently misplaced or
+forgotten. The new digital version will allow users to collect points automatically with
+every purchase and redeem them for rewards, such as free items, exclusive discounts,
+or early access to offers. Business owners strongly support this direction, as they believe
+it will help build customer loyalty and encourage repeated visits.
+▪ The Council also wants to integrate elements of persuasive design, such as
+achievement badges for supporting local businesses, weekly streaks for visiting certain
+neighbourhoods, and gentle reminders about upcoming events or expiring rewards.
+▪ Another important aspect is the inclusion of a community events calendar, which
+many residents have requested. Currently, local events such as farmers’ markets,
+cultural performances, craft workshops, and pop-up exhibitions are announced
+informally through social media or posters on lamp posts. MyLocalHub will bring these
+events together into a single, easily accessible digital space, increasing participation
+and helping event organisers reach broader audiences.
+3
+Dr Avgousta Kyriakidou Zacharoudiou
+▪ While the initial release focuses on customers accessing local shops, exploring offers,
+joining events, and claiming rewards, the long-term vision includes creating a business
+dashboard for shop owners.
+▪ This dashboard will eventually allow businesses to upload their own offers, track
+customer engagement, and access insights about foot traffic and loyalty patterns.
+Although this dashboard is outside the scope of the student prototype, it shapes several
+of the user needs and requirements for the customer-facing mobile experience.
+The development of MyLocalHub is being spearheaded by Marketing Director Anna
+Papadopoulou, who emphasises that the project must not only be functional but also
+emotionally resonant. She wants the digital experience to evoke a sense of belonging, pride,
+and community support. The Council sees MyLocalHub as more than a utility; it should feel
+like a friendly companion that encourages people to explore their city, discover hidden gems,
+and support local businesses in a meaningful way.
+Your design team has already secured the contract to create the app’s initial user interface
+design. You are now expected to produce a high-fidelity prototype that demonstrates how
+residents will navigate the app, access business information, collect rewards, explore events,
+and engage with their community. The prototype must be aesthetically coherent and
+incorporate elements of persuasive design and emotional interaction, as the Council places
+strong emphasis on creating an experience that is both helpful and inspiring.
+Task Overview:
+Design a high-fidelity prototype of the proposed mobile application’s user interface for
+MyLocalHub. The design should consider user requirements across multiple screens, ensuring
+clear navigation between them. The prototype should effectively conceptualize and visualise
+the software, serving as a proof of concept for the final product.
+Requirements:
+• Apply UX/UI design theory.
+• Include navigation flow between screens.
+• Conduct an evaluation using an appropriate technique to assess usability and
+functionality.
+4
+Dr Avgousta Kyriakidou Zacharoudiou
+You are expected to use UX tools to support the design and development of your deliverables.
+You can use any tools of your choice, e.g. Figma, Xtensio etc.
+Important Notes:
+This is a Group Coursework with an individual report as discussed in the deliverables section.
+A Group consists of FIVE TO SIX students. Your lecturer has the final say in the creation
+of the groups for this coursework.
+You are expected to submit 2 outputs on the Moodle submission link.
+1. ONE FINAL GROUP REPORT with two sections
+▪ Each student should individually submit ONE report with two sections.
+▪ Section 1 will include Deliverable 1 which is the group work and Section 2 will
+include Deliverable 2 which is the individual report.
+▪ The title page of the report should include the names and student IDs of all students in
+the group.
+▪ Section 2 should only include the name of the student who has completed the individual
+report.
+▪ The pro-forma included in this coursework specification should be completed
+indicating individual contributions to the work and needs to be approved, accepted,
+and signed by all members of the group. All coursework uploads from a group need
+to include the same pro-forma.
+2. ONE ZIP File with your high-fidelity prototype or the link to access your prototype
+online
+▪ Please note that this coursework will require you to develop a high-fidelity prototype
+based on the coursework case study as a group.
+▪ All students of a coursework group should submit a zip file with the high-fidelity
+prototype on the zip file submission link on Moodle.
+5
+Dr Avgousta Kyriakidou Zacharoudiou
+Group Pro-forma
+In percentage, please indicate the work contribution of each member. This should be
+agreed by all group members.
+The total of all members’ work must add up to 100%.
+Put your initials in the signature columns. This copy must be signed by all members.
+YOU MUST INCLUDE THIS FORM IN YOUR FINAL GROUP REPORT.
+Group/Team Name:________________________________________________
+Team member
+name
+Student ID Individual overall work
+contribution (%)
+Additional notes
+on task
+description
+Student
+Signature:
+Student
+Student
+Student
+Student
+Student
+Total 100%
+6
+Dr Avgousta Kyriakidou Zacharoudiou
+Deliverables
+Deliverable 1: A final group report (approx. 4000 words)
+Your final group report should be around 4,000 words. It should be presented in a
+professional structure and it should be underpinned by academic references in the Harvard
+referencing style.
+The final group report must include the following:
+1. User Research:
+2. a. User groups. A justified identification of three (3) appropriate user personas
+and three (3) scenarios relevant to the design of your high-level prototype.
+b. One empathy map for each persona, please ensure that you cover the four
+quadrants.
+c. At least five (8) user stories, derived directly from personas and scenarios.
+Visual Design. Provide a critical, well-justified visual design strategy directly informing
+the prototype. This section must include:
+a. A moodboard reflecting the emotional tone, brand identity, typography,
+imagery, and colour inspiration.
+b. c. d. Colour palette selection and justification
+Considerations of emotion, branding, accessibility.
+Typography selection and justification. Readable and appropriate for the app
+theme.
+e. f. Layout and grid principles; How the structure supports clarity and navigation.
+Graphic elements, such as icons, images, UI components, visual hierarchy
+decisions.
+4. g. Persuasive design integration, for example rewards, streaks, badges,
+personalised recommendations, scarcity, social proof, encouragement etc.
+h. Emotional interaction integration and justification
+3. Wireframes: Create at least 5 wireframes for your prototype app using a UX tool of your
+choice. Screens can include: Home / Explore; Business details page; Loyalty points &
+rewards; Events page; Checkout, confirmation, or account overview
+Create your Usability Evaluation tool. Outline and justify the evaluation techniques to
+be used (e.g., heuristic evaluation). Create your custom evaluation criteria based on user
+personas, and UX guidelines and research performed above.
+7
+Dr Avgousta Kyriakidou Zacharoudiou
+5. High-fidelity prototype. The high-fidelity prototype should present the core user
+journeys identified in your scenarios, illustrating how users complete their main tasks
+within the app. It must also incorporate appropriate persuasive and emotional design
+elements to enhance engagement and support user motivation. The navigation between
+screens should be clear and intuitive, reflecting a coherent interaction flow. All design
+choices should be traceable to your earlier research, showing how the personas, user
+stories, empathy maps, and moodboard informed and shaped the final prototype.
+Include screenshots with annotations, explaining how design theory influenced each part
+of your design. The prototype screenshots should be annotated in the report to explicitly
+demonstrate this linkage.
+6. Evaluation of your prototype:
+i. Custom Evaluation: Evaluate the high-fidelity prototype using your defined custom
+evaluation criteria.
+ii. AI Evaluation: Perform a second evaluation of your prototype, using one AI tool of
+your choice and include the results in the report.
+iii. Comparison: Compare manual vs. AI evaluation, discussing similarities, differences,
+and how AI can refine the design.
+Deliverable 2: Individual component
+Reflection and evaluation report (500+ words) providing:
+Critical Reflection:
+Reflect on your personal experience designing the UI prototype and how AI tools assisted in
+the design process. Discuss group dynamics and challenges faced. Finally reflect on how you
+will apply what you’ve learnt in future UX/UI projects.
+Deliverable 1 and 2 need to be included in the same report and submitted as
+ONE pdf file.
+Please ensure that you submit a zip file of your high-fidelity prototype (or include the
+link to your prototype) on Moodle together with your report submission or provide
+the link to your prototype within your report.
+8
+Dr Avgousta Kyriakidou Zacharoudiou
+Deliverable 3: Demonstration of prototype system
+A demonstration of the prototype system you have designed will take place. During the
+demonstration, you will be expected to introduce your team and then go through your main
+deliverables. You should demonstrate your prototype to the user (your tutor), explaining your
+UI/UX decisions. Your lecturer will inform you about the date of your demonstration.
+Failure to attend and deliver the demonstration will result in an overall
+mark of zero for this assessment.
+9
+Dr Avgousta Kyriakidou Zacharoudiou
+Detailed Marking Scheme
+Section for which mark is awarded Deliverable 1 – Group component
+1. User Research:
+a. User groups. A justified identification of three (3) appropriate user personas
+and three (3) scenarios relevant to the design of your high-level prototype.
+b. One empathy map for each persona, please ensure that you cover the four
+quadrants.
+c. At least five (8) user stories, derived directly from personas and scenarios.
+2. Visual Design.
+A critical discussion, selection and application of the concepts of colour theory,
+font terminology, layout design and the graphic design elements in the design
+of your high-level prototype.
+a. A moodboard reflecting the emotional tone, brand identity,
+typography, imagery, and colour inspiration.
+b. c. d. Colour palette selection and justification
+Considerations of emotion, branding, accessibility.
+Typography selection and justification. Readable and appropriate for
+the app theme.
+e. Layout and grid principles; How the structure supports clarity and
+navigation.
+f. Graphic elements, such as icons, images, UI components, visual
+hierarchy decisions.
+g. Persuasive design integration, for example rewards, streaks, badges,
+personalised recommendations, scarcity, social proof, encouragement
+etc.
+h. Emotional interaction integration and justification
+.
+3. Wireframes
+Create at least 5, this could include:
+− Home / Explore;
+− Business details page;
+− Loyalty points & rewards;
+− Events page;
+− Checkout, confirmation, or account overview
+4. Evaluation.
+Talk about evaluation techniques (e.g. cognitive walkthrough, GOMS, heuristic
+evaluation) and justify the one you will use to decide which one to take forward.
+Create your custom evaluation criteria based on user personas, and UX
+guidelines and research performed above.
+Dr Avgousta Kyriakidou Zacharoudiou
+Marks
+15
+20
+15
+10
+10
+5. Create high-fidelity prototype
+▪ Create high-level prototype based on scenarios and personas
+developed in section 2 above. Show the design process and how they
+map to the points you raised in the report so far.
+▪ The prototype screenshots should be annotated in the report to
+explicitly demonstrate this linkage.
+20
+1. Evaluation of your prototype:
+Based on your discussion about evaluation methods and guidelines/standards
+above, perform a custom evaluation of your prototype as well as an AI
+evaluation, using an AI tool of your choice. Critically reflect on the results.
+10
+Deliverable 2 – Individual component
+Reflection and evaluation report
+A critical reflection on your own personal experience of designing a user interface for a
+prototype and how AI tools assisted in the design process. Discuss what you have
+learned, how it could be improved, and how you will apply this in practice. Group
+dynamics should also be discussed in this reflection
+5
+Deliverable 3 – Demonstration
+A demonstration of the prototype system you have designed will take place. During the
+demonstration, you will be expected to introduce your team and then go through your
+main deliverables. You should demonstrate your prototype to the user (your tutor),
+explaining your UI/UX decisions.
+5
+TOTAL 100
+Grading Criteria
+Your work will be assessed for the quality of the report you will produce, both the group report
+and your individual reflection as well as the quality of your prototype system. In particular,
+marks will be allocated for:
+▪ Demonstrating excellent research in the areas of interaction design and user interface
+design, methods, guidelines and standards.
+▪ Demonstrating excellent research in the area of visual design and evaluation.
+▪ Application of the theory and providing evidence of the process followed for the
+development of the high-fidelity prototype.
+▪ Ability to develop a high fidelity prototype using a UX prototyping tool and incorporate
+AI tools in the evaluation process critically.
+▪ Presentation, structure and coherence of the report.
+▪ How well you have worked as a group. Group dynamics with effective interaction and
+team cooperation and/or management.
+▪ Demonstration of independent thinking
+▪ Detailed individual critical reflection.
+11
+Dr Avgousta Kyriakidou Zacharoudiou
+Individual student marks may be adjusted according to the pro-forma you will have
+to complete as a group and attach to your report.
+Assessment Criteria – Marking Rubric
+85-100%
+Outstanding
+▪ Demonstrates outstanding knowledge and critical understanding of the underlying
+concepts and principles associated with the area of interaction design and user
+centered design.
+▪ Demonstrates outstanding application of the theories in the area of study to the design
+of relevant prototypes.
+▪ Outstanding coverage of assessment criteria and extensive range and consistent
+accuracy of information and knowledge.
+▪ Mastery of relevant standards, guidelines and evaluation methods and techniques.
+▪ Produce of an exceptionally coherent and well-structured assessment which
+effectively communicates information, arguments and analysis in a variety of forms
+and deploys key techniques of the discipline effectively.
+▪ Fluent argument demonstrating great independent thinking or critical insight.
+▪ Outstanding use of clear, accurate English, exceptionally well organised, with flow
+and progression.
+▪ Sources used are, without exception, acknowledged in the text and the reference
+list/bibliography, using correct citation and based on the Harvard style– including
+online sources. Follows an exceptionally strongly professional approach to academic
+practice.
+80-84%
+Exceptional
+▪ Demonstrates exceptional knowledge and critical understanding of the underlying
+concepts and principles associated with the area of interaction design and user
+centered design.
+▪ Demonstrates exceptional application of the theories in the area of study to the design
+of relevant prototypes.
+▪ Exceptional coverage of assessment criteria and extensive range and consistent
+accuracy of information and knowledge.
+▪ Mastery of relevant standards, guidelines and evaluation methods and techniques.
+▪ Produce of an exceptionally coherent and well-structured assessment which
+effectively communicates information, arguments and analysis in a variety of forms
+and deploys key techniques of the discipline effectively.
+▪ Fluent argument demonstrating great independent thinking or critical insight.
+▪ Exceptional use of the English language, with appropriate structure and flow
+▪ Sources used are, without exception, acknowledged in the text and the reference
+list/bibliography, using correct citation and based on the Harvard style– including
+12
+Dr Avgousta Kyriakidou Zacharoudiou
+online sources. Follows an exceptionally strongly professional approach to academic
+practice.
+70-79%
+Excellent
+▪ Demonstrates excellent knowledge and critical understanding of the underlying
+concepts and principles associated with the area of interaction design and user
+centered design.
+▪ Demonstrates excellent systematic understanding when discussing the design of a
+user interface prototype.
+▪ Excellent coverage of assessment criteria and extensive range and consistent accuracy
+of information and knowledge.
+▪ Excellent understanding of relevant standards, guidelines and evaluation methods and
+techniques.
+▪ Produce an excellent, coherent and well-structured assessment which effectively
+communicates information, arguments and analysis in a variety of forms and deploys
+key techniques of the discipline effectively.
+▪ Fluent argument demonstrating great independent thinking or critical insight.
+▪ Excellent use of clear, accurate English, very well organized.
+▪ Sources used are all acknowledged in the text and the reference list/bibliography,
+using correct citation and based on the Harvard style– including online sources.
+Follows an excellent approach to academic practice.
+60-69%
+Very Good
+▪ Has researched into the routes to designing a user interface prototype and
+demonstrates a very good systematic understanding.
+▪ Coherent and detailed knowledge is presented at a very good level and able to provide
+very good critical analysis of the route to design this.
+▪ Demonstrates very good critical understanding of the materials covered in the course
+which relate to above.
+▪ A very good range of appropriate literature is used. Views are discussed and
+arguments presented with reference to this literature, and there is evidence of very
+good deployment of established techniques and research when designing a prototype.
+▪ There is also evidence of very good commentary on aspects of current research.
+▪ A very good structure – with clear presentation and organisation of ideas. The work
+observes almost all academic conventions in style, content and is presented well,
+mostly using Standard English throughout. The majority of this work uses a style
+which flows well.
+▪ Sources used are almost all acknowledged in the text and the reference
+list/bibliography, mostly using correct citation and mostly based on the Harvard style
+– including most online sources. A very good approach to academic practice.
+55-59%
+Good
+▪ Has researched into the routes to designing a user interface prototype and
+demonstrates good systematic understanding.
+▪ Detailed knowledge is presented at fairly good level and are able to provide some
+good critical analysis of the route to design this.
+13
+Dr Avgousta Kyriakidou Zacharoudiou
+▪ Demonstrates a fairly good understanding of the materials covered in the module.
+▪ Good demonstration of initiative, research, critical analysis, organization,
+engagement, and application
+▪ An adequate coverage of assessment criteria and consistent accuracy of information
+and knowledge.
+▪ Demonstrates a good ability to devise and present a mostly clear argument using your
+understanding of the knowledge gained and based on research.
+▪ A standard and largely accurate application of relevant standards, guidelines and
+evaluation methods and techniques.
+▪ Produce of a good assessment which communicates information, arguments and
+analysis in a variety of forms and deploys key techniques of the discipline effectively.
+▪ Clear argument which may demonstrate a degree of independent thinking or critical
+insight.
+▪ A good structure for the most part. The work observes many academic conventions
+in style and content and is mostly presented in Standard English, with some errors and
+omissions. Some sentence structure also needs revision and this can affect the flow of
+your work in places.
+▪ Literature is not always correctly referenced within the text and/or reference
+list/bibliography. The Harvard style is not always used. Almost all texts are included
+in bibliography. Reading list is good in terms of number of sources.
+50-54%
+Sound
+▪ Demonstrates sound knowledge and a somewhat clear understanding of the
+underlying concepts and principles associated with the area of project planning tools
+and techniques, risk management, budgeting and resources management and
+demonstrates a sound level of engagement.
+▪ A sound demonstration of initiative, research, critical analysis, organisation,
+engagement and application.
+▪ An adequate coverage of assessment criteria and extensive range and consistent
+accuracy of information and knowledge.
+▪ Demonstrates a good ability to devise and present a mostly clear argument using your
+understanding of the knowledge gained and based on research.
+▪ A standard and largely accurate application of relevant project management standards,
+guidelines and evaluation methods and techniques.
+▪ Produce of a good assessment which communicates information, arguments and
+analysis in a variety of forms and deploys key techniques of the discipline effectively.
+▪ Clear argument which may demonstrate a degree of independent thinking or critical
+insight.
+▪ A good structure for the most part. The work observes many academic conventions
+in style and content and is mostly presented in Standard English, with some errors and
+omissions. Some sentence structure also needs revision and this can affect the flow of
+your work in places.
+14
+Dr Avgousta Kyriakidou Zacharoudiou
+▪ Literature is not always correctly referenced within the text and/or reference
+list/bibliography. The Harvard style is not always used. Most of the texts are included
+in bibliography. Reading list is sound but could include more sources.
+45-49%
+Satisfactory
+▪ Routes to designing a user interface prototype are discussed with limited accuracy
+and several omissions.
+▪ Demonstrates a satisfactory level of understanding, but it is less systematic and
+provides a description rather than an analysis and lacks criticality.
+▪ Satisfactory understanding of the way concepts presented are related– with clear
+omissions. Overall a satisfactory attempt at this criteria.
+▪ Demonstrates a satisfactory application of initiative, research, critical analysis,
+organisation, engagement and application.
+▪ Satisfactory reference is made to background reading, but it is limited in nature and
+draws on a restricted number of authors. There is some evidence that the literature has
+helped to inform your designs and satisfactory evidence of use of some techniques
+and research when designing a prototype.
+▪ Demonstrates a satisfactory level of understanding, but it is less systematic and
+provides a description rather than an analysis and lacks criticality. Satisfactory
+understanding of the way concepts presented are related– with clear omissions.
+▪ An adequate coverage of assessment criteria with limited range of information and
+knowledge deployed.
+▪ Some knowledge and simplistic application of relevant techniques.
+▪ A familiar or limited range of information and knowledge deployed, with some areas
+of inaccuracy.
+▪ Argument and analysis may not be fully developed.
+▪ Acceptable quality of presentation, structure and standard of English.
+40-44%
+Pass
+▪ Minimal knowledge and understanding of the underlying concepts and principles
+associated with the area of study.
+▪ Barely acceptable application of initiative, research, critical analysis, organisation,
+engagement and application.
+▪ Routes to designing a user interface prototype are discussed with some accuracy but
+many omissions.
+▪ Demonstrates a satisfactory level of understanding, but it is less systematic and
+provides a description rather than an analysis and lacks criticality. Satisfactory
+understanding of the way concepts presented are related– with clear omissions.
+▪ A barely acceptable coverage of assessment criteria with limited range of information
+and knowledge deployed.
+▪ Simplistic and basic understanding and application of relevant project management
+models and techniques.
+▪ Limited range of information and knowledge deployed, with some areas of
+inaccuracy.
+15
+Dr Avgousta Kyriakidou Zacharoudiou
+▪ Argument and analysis lack development, however there is satisfactory reference to
+background reading and understanding of concepts being presented.
+▪ Acceptable quality of presentation, structure and standard of English.
+<40%
+Fail
+▪ Unacceptable standard.
+▪ Lack of basic knowledge and understanding of the underlying concepts and principles
+associated with the area of study.
+▪ There is a failure to engage with enough relevant literature and, where background
+reading is referred to there is little evidence that it has been understood.
+▪ Little understanding of the techniques needed for designing a prototype. Need to read
+much more widely and improve understanding and the research that supports it.
+▪ Provides little evidence of analysis. There is insufficient evidence of understanding
+of the materials covered in the module.
+▪ An inadequate coverage of assessment criteria with lacking information and
+knowledge and evidence.
+▪ Insufficient or inaccurate knowledge of the subject, its standards, guidelines and
+evaluation techniques.
+▪ Inability to develop a reasoned argument.
+▪ Unacceptable quality of presentation, structure and standard of English
+16
+Dr Avgousta Kyriakidou Zacharoudiou

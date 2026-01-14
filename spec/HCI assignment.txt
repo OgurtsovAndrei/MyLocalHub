@@ -1,0 +1,411 @@
+﻿[CSE11-EN_F25] Human Computer Interaction
+Group Coursework
+Dr. Avgousta Kyriakidou Zacharoudiou
+Group name: ???
+Group team member
+	Student ID
+	Individual overall work contribution (%)
+	Additional notes on task description
+	Student Signature:
+	Vitaly Kurin
+	1220715739
+	
+
+	Part 1
+	  
+
+	Anastasia Grigoryeva
+	1220715605
+	
+
+	Part 2
+	  
+
+	Anton Kosovskii
+	1220715447
+	
+
+	Part 3
+	  
+
+	Ogurtsov Andrei
+	1220718867
+	
+
+	Part 5
+	  
+
+	Mikhail Sergeev
+	1220715897
+	
+
+	Parts 4, 6
+	  
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table of contents:
+        2
+(2) Visual Design.        6
+References:        6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. User Research
+
+
+Persona 1: Mr. Georgios Panagiotis, a kiosk owner. He can use MyLocalHub Application to increase the reach to both locals and tourists.
+  
+
+Empathy Map:
+Says:
+* I would like more people to know about my store
+* I should be able to add promotions for my customers
+* The app should not restrict my family business
+* The app should be easy to use even if I know nothing about tech
+Thinks:
+* The application should support my business and connect me with customers, not tell me how to sell
+* It would be great if someone did marketing job for me
+* I have a unique product but cannot sell it as good as I could
+Feels:
+* Frustration from lack of customers
+* Need to retain loyal customers and frequent tourists
+* Copying with weak customer reach
+Does:
+* Has to invent a special promotions and loyalty programs on the fly
+* Sells sea souvenirs and postcards which make the shop unique
+* Uses traditional marketing methods
+
+
+User scenario:
+Georgios decides to launch a seasonal promotion at the beginning of the tourist season. The MyLocalHub application should be the way to connect with customers. He logs in as a business owner. Next, he decides to launch two promotions, based on analytics and numbers that are available for him as an owner under “My analytics”: 1+1 on an item (shell accessory) and sales of 30% on the season specialties (slippers and hats). The interface provides a clear way on how to create, enable and disable both promotions under “My Current Promotions”. He updates the inventory in the section “My items”. He also decides to launch an ad within the application for potential tourists to increase the reach under “Advertisement”, and the app allows for customization of the duration and budget limit. In a week, he sees great results under “My analytics” - many customers have seen the ad and a good value promotion and came to shop.
+
+
+Persona 2: Jonathan Smith, a retired marine who seeks relaxation vacations. He can use the MyLocalHub app to know about local pearls which would make him return again. 
+  
+
+
+
+Empathy Map:
+Says:
+* I am seeking for a favorite vacation place
+* As a tourist, I know little about local shops and it is hard to learn about them
+* The community is important for my impression after vacation
+* I come after the culture, not after low prices
+Thinks:
+* These local businesses have great vibes, but how can I know about them?
+* I like to occasionally return to places which gave me the best impression
+* If only local shops had a loyalty program… That would give me a second home feeling
+Feels:
+* Passion for exploring local food and products
+* Need for a better way to get most of the experience
+* Boredom and tiredness of big cities and crowded destinations
+Does:
+* Goes on vacations frequently
+* Seeks great destinations for vacation, not new ones
+* Visits local taverns and stores on a regular basis
+
+
+User scenario:
+Jonathan decides to go on a week trip with his wife. He thinks about a potential destination and notices the MyLocalHub app in his phone, which gives him a good idea of the destination. He arrives in Larnaca and opens the MyLocalHub app to see potential shops. He can check accumulated points in his profile under “Profile”. He also checks out “Shops” and “Food” sections to inspect any newly opened points. He can also see mini icons for promotions that indicate the most valuable ones like “1+1” or “-30% off”. He decides to visit Georgios’ shop, as he sees the promotion. He accesses the store page and finds all the necessary information about the shop as well as indicative inventory. The information satisfies his needs and he goes there.
+
+
+
+
+Persona 3: Maria Ioannou, a school teacher who would like the community to thrive
+  
+
+
+
+Empathy Map:
+Says:
+* I am tired of big corporations
+* Recently I discovered that a shop has opened nearby. How many more am I missing?
+* Taverns and stores are an important part of the culture
+Thinks:
+* How can I discover new stores?
+* It would be great to have a loyalty program in local places, it is a pity they cannot easily afford that
+* Rise of local owned businesses will give a huge boost to local economy
+Feels:
+* Curiosity for new and unique shopping options
+* Frustration because of corporations
+* Need for community to be more autonomous
+Does:
+* Talks to friends and colleagues a lot to learn about recent news
+* Goes to local gyros stands and taverns
+* Knows local business owners in vicinity
+
+
+User scenario:
+Maria decides to have dinner. For this matter she opens MyLocalHub app and checks her points in her “Profile” section. She decides that there are no good accumulated offers in the “Points” section and therefore goes to her favorite tavern. During the order she uses the MyLocalHub store page to redeem points for her order that can be used later. By using the QR icon she accesses QR code and shows it during the order, and the points appear in her account. Later she checks the application for any new stores in section “Shops” - by using geoposition and filter “New” only relevant ones are left. She inspects the items in a new store and its working hours.
+
+
+
+
+
+
+
+
+(2) Visual Design.
+a. A moodboard reflecting the emotional tone, brand identity, typography,
+imagery, and colour inspiration.
+Key words for the design:
+-warmth
+-local and trustworthy
+-community and interactions
+-user-friendly (easy to use for all people)
+-discovery
+With that in mind, our moodboard should reflect the following:
+For MyLocalHub, the moodboard should express localness as something lived-in and continuous. This means picking out pictures that show signs of use and human presence like small shop interiors, natural light, people interacting casually rather than posed promotional shots.
+  
+
+b. Colour palette selection and justification
+  
+
+
+
+Off-white (Parchment) colour as a background - a warmer, less bright alternative to plain white background to reduce eye strain, while keeping things simple and minimal.
+Graphite - a softer black colour for text, with high legibility while less harsh than pure black.
+Silver for metadata, like opening hours or distances and other supporting text. It is used for establishing hierarchy and keeping focus on primary content.
+Rosy Copper concludes our main colours, as a warm colour that is associated with brick or clay, something handcrafted. Also can be associated with Mediterranean architecture. It feels local and soft, while still being bright enough for the main colour to stand out from the background. Should be used in places like primary buttons (like “View shop” or “Join event”).
+Teal colour is chosen for 2 different reasons:
+-Firstly, it’s a combination between blue (which is calm and trusting) and green (which is growth and sustainability). 
+-Secondly, it is also associated with the Mediterranean and with the sea, which is great for an app built for Larnaca. It also provides a great contrast to our red-hued primary colour. 
+Finally, Tuscan Sun is chosen as a sort of gold colour for rewards or progress indicators, as gold is universally associated with achievement and recognition. Plus, it is also a warm and sunny colour, which is great for both our purpose and as a complement to the other colours. 
+c. Considerations of emotion, branding, accessibility.
+The emotional tone of MyLocalHub is intentionally calm, warm, and reassuring. Our app should function as a calm interface mediating relationships between residents and local businesses as opposed to commercial platforms that rely on urgency and stimulation, with screaming colours and addicting interface. Soft colour contrasts and rounded interface elements are used to reduce cognitive stress. From an emotional design perspective, this approach primarily addresses Norman’s behavioural and reflective levels. At the behavioural level, the interface feels predictable and easy to use, reducing friction for users with lower digital confidence. The design reinforces positive self-perception by framing actions such as visiting shops or attending events as meaningful contributions to the local community rather than transactional behaviours at the reflective lеvel. 
+As for the branding, we are trying to center the cues that are associated with humans and warm environments, with minimalistic and soft icons and informal illustrative elements. 
+Text and background colour combinations meet WCAG contrast guidelines, icons, labels, and text should be provided to support understanding, instead of relying on colour only. It’s very important to prioritise accessibility to make sure our app can be used by a wide range of people. 
+d. Typography selection and justification. Readable and appropriate for the app
+theme.
+A humanist sans-serif typeface SF Pro is used as the primary typeface across the application. SF Pro is designed for digital interfaces and for having legibility at small sizes, making it well-suited for mobile contexts where information is often accessed quickly and in short sessions. It is also modern and a bit rounded, making its atmosphere suit our app and purpose - friendly and approachable tone. We are going to use bold for headings. 
+The typographic hierarchy is established through controlled variation in colour and weight rather than decorative styling. Headings are set in bold to clearly indicate sections such as “Shops”, “Events”, or “My Profile”, supporting navigation and orientation within the app. Body text uses regular weights optimised for readability, while secondary information such as opening hours is displayed in grey colour in our colour scheme to establish visual hierarchy. This hierarchy allows users like Jonathan (see section 1) to quickly scan shop information, while also supporting more detailed reading when needed.
+We will not use handwritten fonts since it could impact readability, hence, accessibility, particularly for users with visual impairments or lower digital confidence, even though it could be considered more cozy and authentic. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+e. Layout and grid principles; How the structure supports clarity and navigation. 
+Inspiration for the layout: 
+  
+
+
+
+f. Graphic elements, such as icons, images, UI components, visual hierarchy
+decisions.
+Icons are designed as simple, rounded line icons with consistent stroke weight to have a visual coherence across the interface. We want to use recognisable symbols to reduce ambiguity and language dependence, which is particularly important for tourists and older users. 
+
+
+We want to have real pictures of the places as opposed to stock or AI generated imagery. Even though generated images might have provided an overall more coherent picture with a vibe that is more pleasant, it’s particularly important to avoid it and use real pictures for establishing trust and reinforce the app’s emphasis on real people and lived-in spaces. 
+
+
+UI components such as cards, buttons, and progress indicators follow a clear visual hierarchy. Cards are used to group related information (e.g. shop listings, events, or promotions), while primary actions are visually distinguished through colour and placement. Loyalty points and rewards are represented using progress bars and simple visual indicators, making abstract concepts like accumulation and achievement immediately understandable.
+
+
+inspiration for the icons:
+  
+
+
+
+g. Persuasive design integration, for example rewards, streaks, badges,
+personalised recommendations, scarcity, social proof, encouragement etc.
+As a social proof, we could use pop-ups or text similar to“120 people visited this shop this week”. It helps the users to not only understand, which places are more popular and could be trusted more, but also establish a community of the app as a whole - to feel as a part of the system and continue using it. There should also be real reviews from the users for better understanding of the kind of place someone is looking at. These cues help users like Jonathan make informed decisions without feeling pressured, while also supporting business owners like Georgios by highlighting engagement and popularity. The app should also send gentle reminders, but rarely to avoid getting tiring and making users turn the notifications off. 
+
+
+Reward persuasion is implemented through loyalty points and progress bars, visually communicating proximity to rewards, for example, “You’re close to a free coffee from [a place]” - both rewarding and feeling of accomplishment as you get closer, while also being able to keep track of loyalty programs and your track in one place. 
+h. Emotional interaction integration and justification.
+Positive Feedback:
+Emotional interactions in MyLocalHub are designed to provide positive reinforcement and reflective feedback. Immediate positive feedback is provided through subtle confetti animation. This interaction is intentionally brief and understated, for ensuring they feel rewarding rather than distracting.
+Language:
+Friendly language reinforces the app’s values and emotional tone. Messages such as:
+-“Thank you for supporting local!”
+-“You’re part of the community”
+help users frame their actions as meaningful contributions rather than routine transactions. This is relevant for personas like Maria, who are emotionally motivated by community impact rather than personal gain.
+Reflective Design:
+At the reflective level, the app provides periodic summaries of local impact, like:
+-monthly summary of local impact
+-“You’ve supported 12 local businesses this month”
+These reflective moments help encourage users to see their behaviour as part of a broader social context and keep them in the app, as they can see and track their progress and impact there. 
+
+
+
+
+(4) Evaluation technique.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+References:

@@ -1,0 +1,63 @@
+Feature Extension Specification: Add Business (MyLocalHub)
+
+1. Overview
+The "Add Business" feature is designed to empower local entrepreneurs to join the MyLocalHub community. By providing a simple, warm, and encouraging interface, we lower the barrier for traditional business owners (like Georgios) to establish a digital presence.
+
+2. Visual Design & User Interface
+The design follows the established "MyLocalHub" visual strategy, emphasizing warmth and trust. The feature is primarily accessible via the Profile section to keep the main Explore page focused on discovery for regular users.
+
+2.1 Entry Points
+- Profile section: A primary action button "Add Your Business".
+- Styling: Rounded corners (12-16px), brand colors (Rosy Copper, Teal).
+- Icons: "plus-circle" and "layout-dashboard" (Lucide icons).
+
+2.2 Add Business Form
+- Header: Bold "Add Your Business" with a welcoming subtext.
+- Input Fields: 
+    - Rounded corners (12px) to reduce visual tension.
+    - Soft border (#E0E0E0) that changes to Rosy Copper on focus.
+    - Warm Parchment background if applicable, or clean white for clarity.
+- Fields:
+    - Business Name (Required)
+    - Category (Dropdown: Food & Drink, Crafts, Beauty, Leisure)
+    - Description (Textarea for storytelling)
+    - Business Address: 
+        - Text input for the descriptive address.
+        - Interactive Map (Leaflet) integrated directly below the input.
+        - Functionality: Users can tap on the map or drag a pin to set exact coordinates, simplifying the location discovery process.
+    - Shop Photo URL (Visual authenticity)
+
+3. HCI and Emotional Design
+Consistent with the core specification, this feature implements Persuasive and Emotional design principles.
+
+3.1 Positive Feedback
+- Confetti Animation: Triggered upon successful form submission using `canvas-confetti`.
+- Tone: Uses colors from the brand palette (#C65A3A, #2F6F6D, #F2C94C).
+- Purpose: To celebrate the user's decision to support the local economy and reduce "form fatigue."
+
+3.2 Friendly Language
+- Toast Notification: "Business submitted successfully!"
+- Subtext: "Thank you for supporting local!" remains visible in the profile to reinforce the community value.
+
+3.3 Low Cognitive Load
+- Minimalist Layout: Only essential fields are requested.
+- Clear Navigation: A prominent "Back to Profile" link with an arrow icon ensures the user never feels "lost" in the process.
+
+4. Implementation Details (Mock)
+- Navigation: Handled via `renderAddBusiness()`, `renderBusinessDashboard()`, and `renderShopSetup()` functions.
+- State Management: 
+    - `USER_DATA.ownedShops` tracks ownership.
+    - Promotions and descriptions updated in-memory for immediate prototype feedback.
+    - Celebratory confetti used for positive reinforcement on both addition and promotion updates.
+
+5. Advanced Business Features
+5.1 Business Dashboard (Management)
+- Access: "Business Dashboard" button appears in Profile for shop owners.
+- Analytics: Visual tiles showing Total Visits and Avg. Rating (using brand colors).
+- Business List: Shows all owned shops with quick access to settings.
+
+5.2 Business Setup & Promotion Management
+- Purpose: Direct setup flow after adding a business.
+- Promotion Control: Input field to update the shop's active offer in real-time.
+- Details Management: Ability to update shop description to keep it fresh.
+- Marketing Integration: Encouragement to browse community events to increase visibility.
