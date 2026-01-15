@@ -4,11 +4,32 @@ function renderProfile(container) {
         <div class="mb-4">
             <h2 class="fw-bold">My Profile</h2>
         </div>
-        <div class="card card-custom p-4 mb-4 text-center" style="border-top: 5px solid var(--accent-color)">
-            <h4 class="fw-bold mb-1">Impact Summary</h4>
-            <p class="text-muted">Thank you for supporting local!</p>
-            <div class="h1 fw-bold text-accent" style="color: var(--accent-color)">${USER_DATA.supportedBusinesses}</div>
-            <p class="small text-muted">Local businesses supported this month</p>
+        <div class="card card-custom p-4 mb-4 text-center shadow-sm" style="background: linear-gradient(135deg, var(--bg-color) 0%, #fff 100%); border-top: 5px solid var(--accent-color)">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge" style="background-color: var(--accent-color); font-size: 0.7rem;">JANUARY 2026 IMPACT</span>
+                <i data-lucide="share-2" size="18" class="text-muted cursor-pointer" onclick="showToast('Summary ready to share!')"></i>
+            </div>
+            <h4 class="fw-bold mb-1">Your Community Footprint</h4>
+            <p class="text-muted small mb-4">Thank you for making Larnaca thrive!</p>
+            
+            <div class="row g-2 mb-3">
+                <div class="col-4">
+                    <div class="h2 fw-bold mb-0" style="color: var(--accent-color)">${USER_DATA.supportedBusinesses}</div>
+                    <p class="text-muted" style="font-size: 0.6rem; text-transform: uppercase; font-weight: 700;">Shops</p>
+                </div>
+                <div class="col-4 border-start border-end">
+                    <div class="h2 fw-bold mb-0" style="color: var(--secondary-color)">4</div>
+                    <p class="text-muted" style="font-size: 0.6rem; text-transform: uppercase; font-weight: 700;">Events</p>
+                </div>
+                <div class="col-4">
+                    <div class="h2 fw-bold mb-0" style="color: var(--gold-color)">240€</div>
+                    <p class="text-muted" style="font-size: 0.6rem; text-transform: uppercase; font-weight: 700;">Local Economy</p>
+                </div>
+            </div>
+            
+            <div class="p-2 rounded-3" style="background-color: rgba(198, 90, 58, 0.05);">
+                <p class="small mb-0 text-secondary" style="font-style: italic;">"You've helped sustain 3 family businesses this month!"</p>
+            </div>
         </div>
 
         <div class="mb-4">
