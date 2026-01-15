@@ -296,3 +296,22 @@ function initMap(items) {
         });
     }, 100);
 }
+
+function openOnMap(type, id) {
+    // 1. Update Navigation UI
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(i => i.classList.remove('active'));
+    const exploreNav = document.querySelector('.nav-item[data-section="explore"]');
+    if (exploreNav) exploreNav.classList.add('active');
+
+    // 2. Set view mode and render
+    currentViewMode = 'map';
+    renderSection('explore');
+    
+    // 3. Focus on item after map is initialized
+    setTimeout(() => {
+        focusItemOnMap(type, id);
+    }, 600);
+}
+
+window.openOnMap = openOnMap;

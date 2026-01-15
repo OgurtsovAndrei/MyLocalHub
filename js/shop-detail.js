@@ -17,6 +17,13 @@ function showShopDetail(shopId) {
                     <span class="promo-badge">${shop.promotion}</span>
                 </div>
                 <p class="text-muted">${shop.category} • ★ ${shop.rating}</p>
+                <div class="d-flex align-items-center text-muted mb-3">
+                    <i data-lucide="map-pin" size="18" class="me-2"></i>
+                    <span class="small">${shop.location}</span>
+                    <button class="btn btn-sm btn-outline-custom ms-auto" onclick="openOnMap('place', ${shop.id})" style="font-size: 0.7rem; border-radius: 8px;">
+                        <i data-lucide="map" size="12" class="me-1"></i> View on Map
+                    </button>
+                </div>
                 <div class="p-3 mb-3 rounded-3" style="background-color: #FFF0ED; border: 1px solid var(--accent-color)">
                     <h6 class="fw-bold text-accent" style="color: var(--accent-color)">Exclusive Offer</h6>
                     <p class="mb-0 small">${shop.promotion}. Show your QR code at the counter to claim.</p>

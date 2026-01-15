@@ -9,6 +9,7 @@ const SHOPS_DATA = [
         visits: 120,
         image: "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&q=80&w=400",
         description: "Authentic local crafts and seashell treasures right by the Larnaca promenade.",
+        location: "Finikoudes Promenade, Larnaca",
         lat: 34.9120,
         lng: 33.6370
     },
@@ -22,6 +23,7 @@ const SHOPS_DATA = [
         visits: 250,
         image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=400",
         description: "Freshly roasted beans and community atmosphere.",
+        location: "Zinonos Kitieos St, Larnaca",
         lat: 34.9155,
         lng: 33.6335
     },
@@ -35,6 +37,7 @@ const SHOPS_DATA = [
         visits: 85,
         image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=400",
         description: "Traditional Cypriot ceramics with a modern twist.",
+        location: "Piale Pasa, Larnaca",
         lat: 34.9178,
         lng: 33.6282
     },
@@ -48,6 +51,7 @@ const SHOPS_DATA = [
         visits: 180,
         image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=400",
         description: "Artisan sourdough and sweet pastries baked fresh every dawn.",
+        location: "Ermou Street, Larnaca",
         lat: 34.9142,
         lng: 33.6318
     },
@@ -61,6 +65,7 @@ const SHOPS_DATA = [
         visits: 65,
         image: "https://images.unsplash.com/photo-1549439602-43ebca2327af?auto=format&fit=crop&q=80&w=400",
         description: "Preserving the heritage of Lefkara lace-making in the heart of the city.",
+        location: "Agios Lazaros St, Larnaca",
         lat: 34.9165,
         lng: 33.6305
     },
@@ -74,6 +79,7 @@ const SHOPS_DATA = [
         visits: 95,
         image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=400",
         description: "Holistic treatments using local sea salts and essential oils.",
+        location: "Mackenzie Area, Larnaca",
         lat: 34.9115,
         lng: 33.6385
     },
@@ -87,6 +93,7 @@ const SHOPS_DATA = [
         visits: 140,
         image: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&q=80&w=400",
         description: "Natural skincare products derived from organic Cypriot olive groves.",
+        location: "Lordou Vyronos St, Larnaca",
         lat: 34.9185,
         lng: 33.6255
     },
@@ -100,6 +107,7 @@ const SHOPS_DATA = [
         visits: 110,
         image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=400",
         description: "Professional diving instruction and guided tours to the world-famous Zenobia wreck.",
+        location: "Piale Pasa 38, Larnaca",
         lat: 34.8985,
         lng: 33.6450
     },
@@ -113,6 +121,7 @@ const SHOPS_DATA = [
         visits: 210,
         image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&q=80&w=400",
         description: "Explore the Salt Lake and coastal paths on our premium city bikes.",
+        location: "Mackenzie Beach, Larnaca",
         lat: 34.9005,
         lng: 33.6205
     },
@@ -126,6 +135,7 @@ const SHOPS_DATA = [
         visits: 155,
         image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=400",
         description: "Unique mementos and locally designed gifts that tell the story of Cyprus.",
+        location: "Stoa Kouppa, Larnaca",
         lat: 34.9135,
         lng: 33.6355
     },
@@ -139,6 +149,7 @@ const SHOPS_DATA = [
         visits: 320,
         image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80&w=400",
         description: "The main hub for local organic produce in Larnaca. Open every Sunday morning at St. Lazarus Square.",
+        location: "St. Lazarus Square, Larnaca",
         lat: 34.9150,
         lng: 33.6345
     }
