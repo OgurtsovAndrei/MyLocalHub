@@ -12,6 +12,7 @@ const USER_DATA = {
     ],
     supportedBusinesses: 12,
     streak: 3,
+    savedShops: [],
     ownedShops: [],
     lat: 34.9140,
     lng: 33.6320

@@ -60,6 +60,20 @@ function renderProfile(container) {
                 </div>
             </div>
 
+            <div class="card card-custom p-3 mb-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="fw-bold">Offline Simulation</div>
+                        <div class="small text-muted">Access saved content without data</div>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="offlineSwitch" 
+                               ${document.body.classList.contains('offline-mode') ? 'checked' : ''}
+                               onchange="toggleOfflineMode()">
+                    </div>
+                </div>
+            </div>
+
             <div class="card card-custom p-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
@@ -74,6 +88,27 @@ function renderProfile(container) {
                     </select>
                 </div>
             </div>
+        </div>
+
+        <h4 class="fw-bold mb-3">Saved for Offline</h4>
+        <div class="mb-4">
+            ${USER_DATA.savedShops.length > 0 ? USER_DATA.savedShops.map(id => {
+                const shop = SHOPS_DATA.find(s => s.id === id);
+                return `
+                    <div class="card card-custom p-2 mb-2" onclick="showShopDetail(${shop.id})">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="${shop.image}" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                            <div>
+                                <h6 class="fw-bold mb-0 small">${shop.name}</h6>
+                                <p class="text-muted mb-0" style="font-size: 0.6rem;">${shop.category} • Available Offline</p>
+                            </div>
+                            <div class="ms-auto pe-2">
+                                <i data-lucide="chevron-right" size="16" class="text-muted"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('') : '<p class="text-muted small">No shops saved for offline yet.</p>'}
         </div>
 
         <h4 class="fw-bold mb-3">Your Badges</h4>
