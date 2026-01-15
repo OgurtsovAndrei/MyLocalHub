@@ -562,3 +562,131 @@ body {
     background-color: var(--accent-color);
     color: #fff;
 }
+
+/* Accessibility Mode Styles */
+body.accessibility-mode {
+    font-size: 1.3rem;
+}
+
+body.accessibility-mode .container-mobile {
+    max-width: 650px;
+}
+
+@media (min-width: 992px) {
+    body.accessibility-mode .container-mobile {
+        max-width: 1300px;
+    }
+}
+
+body.accessibility-mode h1, 
+body.accessibility-mode h2, 
+body.accessibility-mode .h1 {
+    font-size: 2.8rem;
+}
+
+body.accessibility-mode h4, 
+body.accessibility-mode .h4 {
+    font-size: 2rem;
+}
+
+body.accessibility-mode .nav-item {
+    font-size: 1rem;
+}
+
+body.accessibility-mode .nav-item i {
+    width: 32px;
+    height: 32px;
+}
+
+body.accessibility-mode svg.lucide {
+    width: 28px;
+    height: 28px;
+}
+
+body.accessibility-mode .btn-map-toggle svg.lucide {
+    width: 32px;
+    height: 32px;
+}
+
+body.accessibility-mode .btn-cal-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+body.accessibility-mode .btn-primary-custom,
+body.accessibility-mode .btn-outline-custom,
+body.accessibility-mode .btn-accent-active {
+    font-size: 1.25rem;
+    padding: 16px 32px;
+}
+
+body.accessibility-mode .category-item {
+    font-size: 1.25rem;
+    padding: 12px 24px;
+}
+
+body.accessibility-mode .btn-map-toggle {
+    width: auto;
+    height: auto;
+    min-width: 70px;
+    min-height: 70px;
+    padding: 10px;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.button-label {
+    display: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+body.accessibility-mode .button-label {
+    display: block;
+    font-size: 0.85rem;
+}
+
+body.accessibility-mode .card-title {
+    font-size: 1.6rem;
+}
+
+body.accessibility-mode .promo-badge {
+    font-size: 1.1rem;
+}
+
+body.accessibility-mode .small, 
+body.accessibility-mode small {
+    font-size: 1.1rem;
+}
+
+body.accessibility-mode .calendar-day-label {
+    font-size: 1rem;
+}
+
+body.accessibility-mode .calendar-day {
+    font-size: 1.2rem;
+}
+
+body.accessibility-mode .badge-item {
+    font-size: 1.1rem;
+}
+
+body.accessibility-mode .event-preview-info h6 {
+    font-size: 1.1rem;
+}
+
+body.accessibility-mode .event-preview-info p {
+    font-size: 1rem;
+}
+
+body.accessibility-mode .event-preview-popup {
+    width: 250px;
+}
+
+body.accessibility-mode .event-preview-img {
+    width: 60px;
+    height: 60px;
+}

@@ -65,10 +65,12 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
         <div class="d-flex align-items-center mb-4 gap-2">
             <button class="btn-map-toggle ${currentViewMode === 'map' ? 'active' : ''}" onclick="setViewMode('map')" title="Toggle Map">
                 <i data-lucide="map"></i>
+                <span class="button-label">Map</span>
             </button>
             ${(typeFilter === 'event' || typeFilter === 'All') ? `
             <button class="btn-map-toggle ${currentViewMode === 'calendar' ? 'active' : ''}" onclick="handleCalendarClick()" title="Toggle Calendar">
                 <i data-lucide="calendar"></i>
+                <span class="button-label">Calendar</span>
             </button>
             ` : ''}
             <div class="search-bar mb-0 flex-grow-1">

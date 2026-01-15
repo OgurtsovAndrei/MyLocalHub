@@ -23,6 +23,23 @@ function renderProfile(container) {
             <p class="small text-muted text-center mt-2">Join our community as a shop owner</p>
         </div>
 
+        <div class="mb-4">
+            <h4 class="fw-bold mb-3">App Settings</h4>
+            <div class="card card-custom p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="fw-bold">Accessibility Mode</div>
+                        <div class="small text-muted">Larger text and button labels</div>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="accessibilitySwitch" 
+                               ${document.body.classList.contains('accessibility-mode') ? 'checked' : ''}
+                               onchange="toggleAccessibilityMode()">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <h4 class="fw-bold mb-3">Your Badges</h4>
         <div class="badge-grid">
             ${USER_DATA.badges.map(badge => `

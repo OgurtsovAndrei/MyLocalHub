@@ -1,6 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
+    initAccessibilityMode();
     initApp();
 });
+
+function initAccessibilityMode() {
+    const isEnabled = localStorage.getItem('accessibilityMode') === 'true';
+    if (isEnabled) {
+        document.body.classList.add('accessibility-mode');
+    }
+}
+
+function toggleAccessibilityMode() {
+    const isEnabled = document.body.classList.toggle('accessibility-mode');
+    localStorage.setItem('accessibilityMode', isEnabled);
+    showToast(isEnabled ? 'Accessibility Mode On' : 'Accessibility Mode Off');
+    
+    // Re-render current section to apply changes if needed (e.g. icons resize)
+    const activeNav = document.querySelector('.nav-item.active');
+    if (activeNav) {
+        renderSection(activeNav.getAttribute('data-section'));
+    }
+}
 
 function initApp() {
     renderSection('explore');

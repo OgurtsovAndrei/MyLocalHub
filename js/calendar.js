@@ -20,9 +20,15 @@ const Calendar = {
         let html = `
             <div class="calendar-container animate__animated animate__fadeIn">
                 <div class="calendar-header">
-                    <button onclick="Calendar.changeMonth(-1)" class="btn-cal-nav"><i data-lucide="chevron-left"></i></button>
+                    <button onclick="Calendar.changeMonth(-1)" class="btn-cal-nav">
+                        <i data-lucide="chevron-left"></i>
+                        <span class="button-label">Prev</span>
+                    </button>
                     <h5 class="fw-bold mb-0">${monthNames[month]} ${year}</h5>
-                    <button onclick="Calendar.changeMonth(1)" class="btn-cal-nav"><i data-lucide="chevron-right"></i></button>
+                    <button onclick="Calendar.changeMonth(1)" class="btn-cal-nav">
+                        <i data-lucide="chevron-right"></i>
+                        <span class="button-label">Next</span>
+                    </button>
                 </div>
                 <div class="calendar-grid">
                     <div class="calendar-day-label">Sun</div>

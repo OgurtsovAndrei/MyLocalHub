@@ -200,6 +200,7 @@ function renderBusinessDashboard() {
                         </div>
                         <button class="btn btn-sm btn-outline-primary-custom" onclick="renderShopSetup(${shop.id})">
                             <i data-lucide="settings" size="16"></i>
+                            <span class="button-label">Settings</span>
                         </button>
                     </div>
                 </div>
