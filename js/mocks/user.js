@@ -11,6 +11,7 @@ const USER_DATA = {
         { id: 2, shopName: "Larnaca Coffee Roasters", date: "2026-01-12", pointsEarned: 15 }
     ],
     supportedBusinesses: 12,
+    streak: 3,
     ownedShops: [],
     lat: 34.9140,
     lng: 33.6320
