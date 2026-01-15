@@ -118,6 +118,33 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
         });
     }
 
+    // Add distance to each item and sort
+    const userLat = USER_DATA.lat;
+    const userLng = USER_DATA.lng;
+    const now = new Date("2026-01-15"); // Use consistent current date
+
+    filteredItems.forEach(item => {
+        item.distance = calculateDistance(userLat, userLng, item.lat, item.lng);
+        if (item.type === 'event') {
+            const eventDate = new Date(item.date);
+            // Time weight: events in the future are preferred, closer in time preferred
+            const timeDiff = eventDate.getTime() - now.getTime();
+            item.timeScore = timeDiff > 0 ? timeDiff / (1000 * 60 * 60 * 24) : 1000; // Penalize past events
+        } else {
+            item.timeScore = 0; // Places are always available
+        }
+    });
+
+    // Sort by distance primarily
+    filteredItems.sort((a, b) => {
+        // Distance weight is high
+        if (Math.abs(a.distance - b.distance) > 0.1) { // 100m difference matters
+            return a.distance - b.distance;
+        }
+        // If distances are very close, use timeScore for events
+        return a.timeScore - b.timeScore;
+    });
+
     if (currentViewMode === 'calendar' && typeFilter === 'event') {
         const exploreContent = document.createElement('div');
         exploreContent.className = 'explore-split-view animate__animated animate__fadeIn';
@@ -237,6 +264,7 @@ function renderItems(container, items) {
                         </div>
                         <p class="text-muted small mb-2">
                             ${isPlace ? `${item.category} • ★ ${item.rating}` : `<i data-lucide="calendar" size="14" class="d-inline"></i> ${item.date}`}
+                            • <span class="text-accent fw-bold">${formatDistance(item.distance)}</span>
                         </p>
                         <p class="small text-secondary mb-3">
                             ${isPlace ? `${item.visits} people visited this week` : `<i data-lucide="map-pin" size="14" class="d-inline"></i> ${item.location}`}
@@ -320,6 +348,7 @@ function initMap(items) {
                         <h6 class="fw-bold mb-1">${isPlace ? item.name : item.title}</h6>
                         <p class="small text-muted mb-2">
                             ${isPlace ? `${item.category} • ★ ${item.rating}` : `<i data-lucide="calendar" size="12"></i> ${item.date}`}
+                            • <span class="text-accent fw-bold">${formatDistance(item.distance)}</span>
                         </p>
                         <button class="btn btn-primary-custom btn-sm py-1" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showEventDetail(${item.id})`}">
                             View Details

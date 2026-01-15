@@ -16,7 +16,7 @@ function getEventDetailHTML(event) {
                 <div class="d-flex flex-column gap-2 mb-4">
                     <div class="d-flex align-items-center text-muted">
                         <i data-lucide="calendar" size="18" class="me-2"></i>
-                        <span>${event.date}</span>
+                        <span>${event.date} • <span class="text-accent fw-bold">${formatDistance(calculateDistance(USER_DATA.lat, USER_DATA.lng, event.lat, event.lng))}</span></span>
                     </div>
                     <div class="d-flex align-items-center text-muted">
                         <i data-lucide="map-pin" size="18" class="me-2"></i>

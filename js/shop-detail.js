@@ -12,7 +12,7 @@ function getShopDetailHTML(shop) {
                     <h2 class="fw-bold mb-0">${shop.name}</h2>
                     <span class="promo-badge">${shop.promotion}</span>
                 </div>
-                <p class="text-muted">${shop.category} • ★ ${shop.rating}</p>
+                <p class="text-muted">${shop.category} • ★ ${shop.rating} • <span class="text-accent fw-bold">${formatDistance(calculateDistance(USER_DATA.lat, USER_DATA.lng, shop.lat, shop.lng))}</span></p>
                 <div class="d-flex align-items-center text-muted mb-3">
                     <i data-lucide="map-pin" size="18" class="me-2"></i>
                     <span class="small">${shop.location}</span>
