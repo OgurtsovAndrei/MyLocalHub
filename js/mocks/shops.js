@@ -33,7 +33,7 @@ const SHOPS_DATA = [
         promotion: "Free mini-vase with any purchase",
         rating: 4.7,
         visits: 85,
-        image: "https://images.unsplash.com/photo-1565193298357-15b4977936be?auto=format&fit=crop&q=80&w=400",
+        image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=400",
         description: "Traditional Cypriot ceramics with a modern twist.",
         lat: 34.9178,
         lng: 33.6282
@@ -59,7 +59,7 @@ const SHOPS_DATA = [
         promotion: "-10% on handmade tablecloths",
         rating: 4.9,
         visits: 65,
-        image: "https://images.unsplash.com/photo-1590676463144-a19105139978?auto=format&fit=crop&q=80&w=400",
+        image: "https://images.unsplash.com/photo-1549439602-43ebca2327af?auto=format&fit=crop&q=80&w=400",
         description: "Preserving the heritage of Lefkara lace-making in the heart of the city.",
         lat: 34.9165,
         lng: 33.6305
@@ -85,7 +85,7 @@ const SHOPS_DATA = [
         promotion: "Buy 2 get 1 free on soaps",
         rating: 4.6,
         visits: 140,
-        image: "https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=400",
+        image: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&q=80&w=400",
         description: "Natural skincare products derived from organic Cypriot olive groves.",
         lat: 34.9185,
         lng: 33.6255
@@ -124,9 +124,22 @@ const SHOPS_DATA = [
         promotion: "Free postcard set over €20",
         rating: 4.7,
         visits: 155,
-        image: "https://images.unsplash.com/photo-1521330784802-dc5a227891bd?auto=format&fit=crop&q=80&w=400",
+        image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=400",
         description: "Unique mementos and locally designed gifts that tell the story of Cyprus.",
         lat: 34.9135,
         lng: 33.6355
+    },
+    {
+        id: 11,
+        name: "Larnaca Farmers Market",
+        category: "Food & Drink",
+        type: "place",
+        promotion: "Fresh local fruits and vegetables",
+        rating: 4.8,
+        visits: 320,
+        image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80&w=400",
+        description: "The main hub for local organic produce in Larnaca. Open every Sunday morning at St. Lazarus Square.",
+        lat: 34.9150,
+        lng: 33.6345
     }
 ];

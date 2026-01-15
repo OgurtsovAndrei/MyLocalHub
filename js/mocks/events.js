@@ -30,7 +30,7 @@ const EVENTS_DATA = [
         location: "Mackenzie Beach",
         category: "Volunteering",
         type: "event",
-        image: "https://images.unsplash.com/photo-1618477461853-cf6ed80fafa5?auto=format&fit=crop&q=80&w=400",
+        image: "https://images.unsplash.com/photo-1594372365401-3b5ff14eaaed?auto=format&fit=crop&q=80&w=400",
         description: "Keep our beaches beautiful. Refreshments provided for all volunteers.",
         lat: 34.8950,
         lng: 33.6355
@@ -54,22 +54,22 @@ const EVENTS_DATA = [
         location: "Old Town Square",
         category: "Entertainment",
         type: "event",
-        image: "https://images.unsplash.com/photo-1514525253344-f814d873e28a?auto=format&fit=crop&q=80&w=400",
+        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=400",
         description: "Enjoy live performances from Larnaca's emerging musicians.",
         lat: 34.9145,
         lng: 33.6325
     },
     {
         id: 6,
-        title: "Farmers Market",
-        date: "Feb 15, 2026",
-        location: "St. Lazarus Square",
+        title: "Larnaca Wine Tasting",
+        date: "Feb 18, 2026",
+        location: "Vintage Wine Bar",
         category: "Food & Drink",
         type: "event",
-        image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80&w=400",
-        description: "Fresh produce directly from our local farmers. Support local agriculture!",
-        lat: 34.9150,
-        lng: 33.6345
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&q=80&w=400",
+        description: "Sample the finest local wines from the Troodos mountains.",
+        lat: 34.9170,
+        lng: 33.6360
     },
     {
         id: 7,
@@ -78,7 +78,7 @@ const EVENTS_DATA = [
         location: "Old Town",
         category: "Community",
         type: "event",
-        image: "https://images.unsplash.com/photo-1517457373958-b7bdd458ad20?auto=format&fit=crop&q=80&w=400",
+        image: "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&q=80&w=400",
         description: "Discover the hidden history of our beautiful city with local guides.",
         lat: 34.9130,
         lng: 33.6315
@@ -126,7 +126,7 @@ const EVENTS_DATA = [
         location: "Municipal Gardens",
         category: "Entertainment",
         type: "event",
-        image: "https://images.unsplash.com/photo-1503095396549-807a89010049?auto=format&fit=crop&q=80&w=400",
+        image: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&q=80&w=400",
         description: "A magical outdoor performance by the local drama troupe.",
         lat: 34.9205,
         lng: 33.6305

@@ -197,8 +197,8 @@ function renderItems(container, items) {
                         <p class="small text-secondary mb-3">
                             ${isPlace ? `${item.visits} people visited this week` : `<i data-lucide="map-pin" size="14" class="d-inline"></i> ${item.location}`}
                         </p>
-                        <button class="btn btn-primary-custom" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showToast('Registered!')`}">
-                            ${isPlace ? 'View Place' : 'Join Event'}
+                        <button class="btn btn-primary-custom" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showEventDetail(${item.id})`}">
+                            ${isPlace ? 'View Place' : 'View Event'}
                         </button>
                     </div>
                 </div>
@@ -219,7 +219,7 @@ function handleItemClick(type, id, event) {
         if (type === 'place') {
             showShopDetail(id);
         } else {
-            showToast('Opening event details...');
+            showEventDetail(id);
         }
     }
 }
@@ -277,7 +277,7 @@ function initMap(items) {
                         <p class="small text-muted mb-2">
                             ${isPlace ? `${item.category} • ★ ${item.rating}` : `<i data-lucide="calendar" size="12"></i> ${item.date}`}
                         </p>
-                        <button class="btn btn-primary-custom btn-sm py-1" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showToast('Registered!')`}">
+                        <button class="btn btn-primary-custom btn-sm py-1" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showEventDetail(${item.id})`}">
                             View Details
                         </button>
                     </div>
