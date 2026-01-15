@@ -751,6 +751,33 @@ body.accessibility-mode .event-preview-img {
     transform: rotate(45deg);
 }
 
+body.accessibility-mode .card-img-top {
+    height: 250px;
+}
+
+body.accessibility-mode .search-bar i {
+    width: 24px;
+    height: 24px;
+}
+
+body.accessibility-mode .search-bar input {
+    font-size: 1.25rem;
+}
+
+.offline-badge {
+    display: none;
+    background: #6c757d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+body.offline-mode .offline-badge {
+    display: inline-block;
+}
+
 @media (max-width: 991px) {
     .btn-map-close {
         width: 44px;

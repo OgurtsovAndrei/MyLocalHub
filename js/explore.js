@@ -81,6 +81,7 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
             <div class="search-bar mb-0 flex-grow-1">
                 <i data-lucide="search" size="20"></i>
                 <input type="text" placeholder="Search places or events...">
+                <i data-lucide="mic" size="20" class="text-muted cursor-pointer ms-2" onclick="showToast('Voice Search active... Listening')"></i>
             </div>
         </div>
 
