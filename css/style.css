@@ -275,9 +275,19 @@ body {
         top: 20px;
     }
 
-    /* Adjust cards in side list to be more compact if needed */
     .explore-list-side .card-custom {
         margin-bottom: 15px;
+    }
+}
+
+.detail-view-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .detail-view-container {
+        max-width: 800px;
     }
 }
 
@@ -689,4 +699,42 @@ body.accessibility-mode .event-preview-popup {
 body.accessibility-mode .event-preview-img {
     width: 60px;
     height: 60px;
+}
+
+.explore-map-side {
+    position: relative;
+}
+
+.btn-map-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+    background: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-color);
+}
+
+.btn-map-close:hover {
+    background: #f8f8f8;
+    transform: scale(1.1);
+    color: var(--accent-color);
+}
+
+@media (max-width: 991px) {
+    .btn-map-close {
+        width: 44px;
+        height: 44px;
+        top: 10px;
+        right: 10px;
+    }
 }

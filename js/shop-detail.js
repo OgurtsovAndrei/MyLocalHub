@@ -1,11 +1,7 @@
-function showShopDetail(shopId) {
-    const shop = SHOPS_DATA.find(s => s.id === shopId);
-    if (!shop) return;
-
-    const appContainer = document.getElementById('app-content');
-    appContainer.innerHTML = `
+function getShopDetailHTML(shop) {
+    return `
         <div class="mb-3">
-            <button class="btn btn-link p-0 text-decoration-none text-dark" onclick="renderSection('explore')">
+            <button class="btn btn-link p-0 text-decoration-none text-dark" onclick="closeDetail()">
                 <i data-lucide="arrow-left" size="20"></i> Back to Explore
             </button>
         </div>
@@ -30,10 +26,30 @@ function showShopDetail(shopId) {
                 </div>
                 <p class="mb-4">${shop.description}</p>
                 <button class="btn btn-primary-custom mb-2" onclick="showToast('Shared!')">Share with Friends</button>
-                <button class="btn btn-outline-secondary w-100" style="border-radius: 12px; padding: 12px" onclick="renderSection('explore')">Close</button>
+                <button class="btn btn-outline-secondary w-100" style="border-radius: 12px; padding: 12px" onclick="closeDetail()">Close</button>
             </div>
         </div>
     `;
-    lucide.createIcons();
+}
+
+function showShopDetail(shopId) {
+    const shop = SHOPS_DATA.find(s => s.id === shopId);
+    if (!shop) return;
+
+    currentDetailItem = { type: 'place', id: shopId };
+    const appContainer = document.getElementById('app-content');
+    
+    // If we are already in explore section, just re-render to support split view
+    if (appContainer && (currentViewMode === 'map' || currentViewMode === 'calendar')) {
+        renderExplore(appContainer, currentFilter, currentTypeFilter, currentDateFilter);
+        // Ensure map is focused
+        if (currentViewMode === 'map') {
+            setTimeout(() => focusItemOnMap('place', shopId), 300);
+        }
+    } else {
+        // Full screen or simple list view
+        renderExplore(appContainer, currentFilter, 'place');
+    }
+    
     window.scrollTo(0,0);
 }

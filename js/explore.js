@@ -4,6 +4,7 @@ let markersMap = {};
 let currentDateFilter = null;
 let currentFilter = 'All';
 let currentTypeFilter = 'All';
+let currentDetailItem = null; // { type, id }
 
 // Global hook for calendar month change
 window.updateCalendar = function(date) {
@@ -30,8 +31,12 @@ function handleCalendarClick() {
     setViewMode('calendar');
 }
 
-function toggleViewMode() {
-    setViewMode('map');
+function closeDetail() {
+    currentDetailItem = null;
+    const appContainer = document.getElementById('app-content');
+    if (appContainer) {
+        renderExplore(appContainer, currentFilter, currentTypeFilter, currentDateFilter);
+    }
 }
 
 function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter = null, calendarViewDate = null) {
@@ -119,13 +124,22 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
 
         const listSide = document.createElement('div');
         listSide.className = 'explore-list-side';
-        renderItems(listSide, filteredItems);
+        
+        if (currentDetailItem) {
+            renderDetailInSide(listSide);
+        } else {
+            renderItems(listSide, filteredItems);
+        }
         
         const calSide = document.createElement('div');
-        calSide.className = 'explore-map-side'; // Reuse map side styling
-        const calDiv = document.createElement('div');
-        calDiv.id = 'calendar-mount';
-        calSide.appendChild(calDiv);
+        calSide.className = 'explore-map-side';
+        calSide.innerHTML = `
+            <button class="btn-map-close" onclick="setViewMode('calendar')" title="Close Calendar">
+                <i data-lucide="x"></i>
+            </button>
+            <div id="calendar-mount"></div>
+        `;
+        const calDiv = calSide.querySelector('#calendar-mount');
         
         // In mobile view, we might want to swap order or stack them differently
         // For now, let's keep list on left/top and calendar on right/bottom (stack on mobile)
@@ -147,14 +161,23 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
         exploreContent.className = 'explore-split-view animate__animated animate__fadeIn';
 
         const listSide = document.createElement('div');
-        listSide.className = 'explore-list-side d-none d-lg-block';
-        renderItems(listSide, filteredItems);
+        listSide.className = 'explore-list-side';
+        
+        if (currentDetailItem) {
+            renderDetailInSide(listSide);
+        } else {
+            listSide.classList.add('d-none', 'd-lg-block');
+            renderItems(listSide, filteredItems);
+        }
         
         const mapSide = document.createElement('div');
         mapSide.className = 'explore-map-side';
-        const mapDiv = document.createElement('div');
-        mapDiv.id = 'map-container';
-        mapSide.appendChild(mapDiv);
+        mapSide.innerHTML = `
+            <button class="btn-map-close" onclick="setViewMode('map')" title="Close Map">
+                <i data-lucide="x"></i>
+            </button>
+            <div id="map-container"></div>
+        `;
         
         exploreContent.appendChild(listSide);
         exploreContent.appendChild(mapSide);
@@ -163,11 +186,32 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
         initMap(filteredItems);
     } else {
         const itemGrid = document.createElement('div');
-        itemGrid.className = 'shop-grid';
-        renderItems(itemGrid, filteredItems);
+        if (currentDetailItem) {
+            itemGrid.className = 'detail-view-container animate__animated animate__fadeIn';
+            renderDetailInSide(itemGrid);
+        } else {
+            itemGrid.className = 'shop-grid';
+            renderItems(itemGrid, filteredItems);
+        }
         container.appendChild(itemGrid);
     }
     lucide.createIcons();
+}
+
+function renderDetailInSide(container) {
+    if (!currentDetailItem) return;
+    
+    if (currentDetailItem.type === 'place') {
+        const shop = SHOPS_DATA.find(s => s.id === currentDetailItem.id);
+        if (shop) {
+            container.innerHTML = getShopDetailHTML(shop);
+        }
+    } else {
+        const event = EVENTS_DATA.find(e => e.id === currentDetailItem.id);
+        if (event) {
+            container.innerHTML = getEventDetailHTML(event);
+        }
+    }
 }
 
 function renderItems(container, items) {
@@ -298,6 +342,9 @@ function initMap(items) {
 }
 
 function openOnMap(type, id) {
+    // 0. Set current detail
+    currentDetailItem = { type, id };
+
     // 1. Update Navigation UI
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(i => i.classList.remove('active'));
