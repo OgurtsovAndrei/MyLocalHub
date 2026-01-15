@@ -12,6 +12,22 @@ function renderRewards(container) {
                 <div class="progress-bar bg-white" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
+
+        <div class="card card-custom p-3 mb-4 border-0 shadow-sm animate__animated animate__pulse animate__infinite animate__slow" style="background-color: #FFF9E6; border-left: 5px solid var(--gold-color) !important;">
+            <div class="d-flex align-items-center gap-3">
+                <div class="bg-white p-2 rounded-circle shadow-sm">
+                    <i data-lucide="flame" style="color: #F2994A" size="24"></i>
+                </div>
+                <div>
+                    <h6 class="fw-bold mb-0">${USER_DATA.streak} Week Streak!</h6>
+                    <p class="small text-muted mb-0">Visit one more shop to keep it alive.</p>
+                </div>
+                <div class="ms-auto text-end">
+                    <span class="badge bg-warning text-dark" style="font-size: 0.6rem;">+20 PTS</span>
+                </div>
+            </div>
+        </div>
+
         <div class="d-grid gap-3">
             <button class="btn btn-primary-custom" onclick="toggleQR()">
                 <i data-lucide="qr-code" size="20" class="me-2"></i> Show My QR
