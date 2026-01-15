@@ -33,14 +33,9 @@ function getShopDetailHTML(shop) {
                 </div>
                 <p class="mb-4">${shop.description}</p>
                 
-                <div class="d-flex gap-2 mb-3">
-                    <button class="btn btn-outline-primary-custom flex-grow-1" onclick="saveForOffline(${shop.id})">
-                        <i data-lucide="download" size="18" class="me-2"></i> Save for Offline
-                    </button>
                     <button class="btn btn-primary-custom flex-grow-1" onclick="showToast('Shared!')">
                         <i data-lucide="share-2" size="18" class="me-2"></i> Share
                     </button>
-                </div>
 
                 <h5 class="fw-bold mb-3">Community Voice</h5>
                 <div class="mb-4">
@@ -82,18 +77,3 @@ function showShopDetail(shopId) {
     window.scrollTo(0,0);
 }
 
-window.saveForOffline = function(shopId) {
-    if (!USER_DATA.savedShops) USER_DATA.savedShops = [];
-    if (!USER_DATA.savedShops.includes(shopId)) {
-        USER_DATA.savedShops.push(shopId);
-        showToast('Shop saved for offline access!');
-        confetti({
-            particleCount: 50,
-            spread: 40,
-            origin: { y: 0.8 },
-            colors: ['#2F6F6D']
-        });
-    } else {
-        showToast('Already saved!');
-    }
-};

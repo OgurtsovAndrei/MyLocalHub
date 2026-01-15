@@ -22,15 +22,6 @@ function toggleAccessibilityMode() {
     }
 }
 
-function toggleOfflineMode() {
-    const isOffline = document.body.classList.toggle('offline-mode');
-    showToast(isOffline ? 'Offline Simulation: ON' : 'Offline Simulation: OFF');
-    
-    const activeNav = document.querySelector('.nav-item.active');
-    if (activeNav) {
-        renderSection(activeNav.getAttribute('data-section'));
-    }
-}
 
 function initApp() {
     renderSection('explore');

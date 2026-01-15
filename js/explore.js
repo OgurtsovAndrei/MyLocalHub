@@ -63,7 +63,7 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
     
     const header = `
         <div class="mb-4">
-            <h2 class="fw-bold">Hello, ${USER_DATA.name}! <span class="offline-badge badge bg-secondary" style="font-size: 0.8rem; vertical-align: middle;">OFFLINE</span></h2>
+            <h2 class="fw-bold">Hello, ${USER_DATA.name}!</h2>
             <p class="text-muted mb-0">Explore your local community</p>
         </div>
         
