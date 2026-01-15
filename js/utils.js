@@ -49,3 +49,35 @@ function formatDistance(dist) {
     }
     return dist.toFixed(1) + ' km away';
 }
+
+function isShopOpen(openingHours) {
+    if (!openingHours) return { open: true, text: "Open" }; 
+    
+    const now = new Date();
+    const day = now.getDay(); // 0 is Sunday
+    
+    if (openingHours.includes("Sundays only") && day !== 0) {
+        return { open: false, text: "Closed (Sundays only)" };
+    }
+    
+    const currentTime = now.getHours() * 60 + now.getMinutes();
+    const times = openingHours.match(/(\d{2}):(\d{2})/g);
+    
+    if (times && times.length === 2) {
+        const [startH, startM] = times[0].split(':').map(Number);
+        const [endH, endM] = times[1].split(':').map(Number);
+        const startTime = startH * 60 + startM;
+        let endTime = endH * 60 + endM;
+        
+        // Handle late closing times (e.g., 01:00)
+        if (endTime < startTime) endTime += 24 * 60;
+        
+        const isOpen = currentTime >= startTime && currentTime <= endTime;
+        return { 
+            open: isOpen, 
+            text: isOpen ? "Open Now" : `Closed (Opens at ${times[0]})` 
+        };
+    }
+    
+    return { open: true, text: "Open" };
+}

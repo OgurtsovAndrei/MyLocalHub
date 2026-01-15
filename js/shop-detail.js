@@ -1,4 +1,5 @@
 function getShopDetailHTML(shop) {
+    const openStatus = isShopOpen(shop.openingHours);
     return `
         <div class="mb-3">
             <button class="btn btn-link p-0 text-decoration-none text-dark" onclick="closeDetail()">
@@ -12,6 +13,12 @@ function getShopDetailHTML(shop) {
                     <h2 class="fw-bold mb-0">${shop.name}</h2>
                     <span class="promo-badge">${shop.promotion}</span>
                 </div>
+                
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge ${openStatus.open ? 'bg-success' : 'bg-danger'} me-2">${openStatus.text}</span>
+                    <span class="text-muted small"><i data-lucide="clock" size="14" class="me-1 d-inline"></i> ${shop.openingHours || '09:00 - 18:00'}</span>
+                </div>
+
                 <p class="text-muted">${shop.category} • ★ ${shop.rating} • <span class="text-accent fw-bold">${formatDistance(calculateDistance(USER_DATA.lat, USER_DATA.lng, shop.lat, shop.lng))}</span></p>
                 <div class="d-flex align-items-center text-muted mb-3">
                     <i data-lucide="map-pin" size="18" class="me-2"></i>
@@ -25,6 +32,20 @@ function getShopDetailHTML(shop) {
                     <p class="mb-0 small">${shop.promotion}. Show your QR code at the counter to claim.</p>
                 </div>
                 <p class="mb-4">${shop.description}</p>
+                
+                <h5 class="fw-bold mb-3">Community Voice</h5>
+                <div class="mb-4">
+                    ${(shop.reviews && shop.reviews.length > 0) ? shop.reviews.map(review => `
+                        <div class="bg-light p-3 rounded-3 mb-2">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="fw-bold small">${review.user}</span>
+                                <span class="text-warning small">${'★'.repeat(review.rating)}</span>
+                            </div>
+                            <p class="small mb-0 italic">"${review.comment}"</p>
+                        </div>
+                    `).join('') : '<p class="text-muted small">No reviews yet. Be the first to share your experience!</p>'}
+                </div>
+
                 <button class="btn btn-primary-custom mb-2" onclick="showToast('Shared!')">Share with Friends</button>
                 <button class="btn btn-outline-secondary w-100" style="border-radius: 12px; padding: 12px" onclick="closeDetail()">Close</button>
             </div>
