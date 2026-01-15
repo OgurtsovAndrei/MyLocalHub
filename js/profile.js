@@ -46,7 +46,7 @@ function renderProfile(container) {
 
         <div class="mb-4">
             <h4 class="fw-bold mb-3">App Settings</h4>
-            <div class="card card-custom p-3">
+            <div class="card card-custom p-3 mb-2">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <div class="fw-bold">Accessibility Mode</div>
@@ -57,6 +57,21 @@ function renderProfile(container) {
                                ${document.body.classList.contains('accessibility-mode') ? 'checked' : ''}
                                onchange="toggleAccessibilityMode()">
                     </div>
+                </div>
+            </div>
+
+            <div class="card card-custom p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="fw-bold">App Language</div>
+                        <div class="small text-muted">Choose your preferred language</div>
+                    </div>
+                    <select class="form-select form-select-sm w-auto border-0 fw-bold text-accent" style="color: var(--accent-color); cursor: pointer;" onchange="showToast('Language feature simulation: Setting to ' + this.options[this.selectedIndex].text)">
+                        <option value="en">English</option>
+                        <option value="el">Ελληνικά</option>
+                        <option value="ru">Русский</option>
+                        <option value="fr">Français</option>
+                    </select>
                 </div>
             </div>
         </div>
