@@ -70,6 +70,7 @@ function renderProfile(container) {
                         <option value="en" ${USER_DATA.language === 'en' ? 'selected' : ''}>English</option>
                         <option value="el" ${USER_DATA.language === 'el' ? 'selected' : ''}>Ελληνικά</option>
                         <option value="ru" ${USER_DATA.language === 'ru' ? 'selected' : ''}>Русский</option>
+                        <option value="fr" ${USER_DATA.language === 'fr' ? 'selected' : ''}>Français</option>
                     </select>
                 </div>
             </div>
