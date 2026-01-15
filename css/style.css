@@ -730,6 +730,27 @@ body.accessibility-mode .event-preview-img {
     color: var(--accent-color);
 }
 
+.custom-marker-wrapper {
+    background: transparent;
+    border: none;
+}
+
+.custom-map-marker {
+    width: 34px;
+    height: 34px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.custom-map-marker i {
+    transform: rotate(45deg);
+}
+
 @media (max-width: 991px) {
     .btn-map-close {
         width: 44px;

@@ -328,6 +328,18 @@ function highlightItemInList(type, id, scroll = false) {
     }
 }
 
+function getCategoryIcon(category) {
+    const iconMap = {
+        'Food & Drink': 'utensils',
+        'Crafts': 'scissors',
+        'Beauty': 'sparkles',
+        'Leisure': 'palmtree',
+        'Souvenirs': 'gift',
+        'default': 'map-pin'
+    };
+    return iconMap[category] || iconMap['default'];
+}
+
 function initMap(items) {
     // Delay to ensure DOM element is ready
     setTimeout(() => {
@@ -352,6 +364,17 @@ function initMap(items) {
 
         items.forEach(item => {
             const isPlace = item.type === 'place';
+            const iconName = getCategoryIcon(item.category);
+            
+            const markerIcon = L.divIcon({
+                html: `<div class="custom-map-marker" style="background-color: ${isPlace ? 'var(--accent-color)' : 'var(--secondary-color)'}">
+                        <i data-lucide="${iconName}" size="16" style="color: white"></i>
+                       </div>`,
+                className: 'custom-marker-wrapper',
+                iconSize: [34, 34],
+                iconAnchor: [17, 34]
+            });
+
             const popupContent = `
                 <div class="map-popup-card">
                     <img src="${item.image}" alt="${isPlace ? item.name : item.title}">
@@ -368,7 +391,7 @@ function initMap(items) {
                 </div>
             `;
 
-            const marker = L.marker([item.lat, item.lng]).addTo(mapInstance);
+            const marker = L.marker([item.lat, item.lng], { icon: markerIcon }).addTo(mapInstance);
             marker.bindPopup(popupContent);
             markersMap[`${item.type}-${item.id}`] = marker;
 
@@ -378,6 +401,7 @@ function initMap(items) {
                 }
             });
         });
+        lucide.createIcons();
     }, 100);
 }
 
