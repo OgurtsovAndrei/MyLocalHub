@@ -35,6 +35,11 @@ function toggleOfflineMode() {
 function initApp() {
     renderSection('explore');
     setupNavigation();
+
+    // Persuasive design: Urgency reminder simulation
+    setTimeout(() => {
+        showToast("Friendly reminder: Your free coffee reward at 'Larnaca Coffee Roasters' expires in 2 days! ☕");
+    }, 5000);
 }
 
 function setupNavigation() {
