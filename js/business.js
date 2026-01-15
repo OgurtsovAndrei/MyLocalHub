@@ -178,6 +178,18 @@ function renderBusinessDashboard() {
             </div>
         </div>
 
+        <div class="card card-custom p-4 mb-4">
+            <h5 class="fw-bold mb-3 small text-uppercase" style="letter-spacing: 1px; color: var(--metadata-color)">Traffic Insights (Last 7 Days)</h5>
+            <div class="d-flex align-items-end justify-content-between" style="height: 120px; padding: 0 10px;">
+                ${[45, 60, 35, 80, 55, 90, 75].map((val, i) => `
+                    <div class="d-flex flex-column align-items-center" style="width: 10%;">
+                        <div style="width: 100%; height: ${val}px; border-radius: 6px 6px 2px 2px; background-color: var(--secondary-color); opacity: ${0.4 + (val/150)}"></div>
+                        <span class="text-muted mt-2" style="font-size: 0.6rem; font-weight: 600;">${['M', 'T', 'W', 'T', 'F', 'S', 'S'][i]}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
         <h4 class="fw-bold mb-3">My Businesses</h4>
     `;
 
@@ -249,6 +261,31 @@ function renderShopSetup(shopId) {
                 <textarea id="desc-input" class="form-control custom-input" rows="3">${shop.description}</textarea>
             </div>
             <button class="btn btn-outline-primary-custom w-100" onclick="updateDetails(${shop.id})">Save Details</button>
+        </div>
+
+        <div class="card card-custom p-4 mb-4">
+            <h5 class="fw-bold mb-3">Inventory Management</h5>
+            <div class="mb-3">
+                <label class="form-label fw-bold small">Today's Specials / Key Items</label>
+                <div class="d-flex align-items-center gap-2 mb-2 p-2 rounded-3 bg-light">
+                    <span class="flex-grow-1 small fw-bold">Handmade Shell Necklace</span>
+                    <span class="badge bg-success" style="font-size: 0.6rem;">In Stock</span>
+                    <i data-lucide="edit-2" size="14" class="text-muted cursor-pointer"></i>
+                </div>
+                <div class="d-flex align-items-center gap-2 mb-2 p-2 rounded-3 bg-light">
+                    <span class="flex-grow-1 small fw-bold">Larnaca Postcards Set</span>
+                    <span class="badge bg-success" style="font-size: 0.6rem;">In Stock</span>
+                    <i data-lucide="edit-2" size="14" class="text-muted cursor-pointer"></i>
+                </div>
+                <div class="d-flex align-items-center gap-2 mb-2 p-2 rounded-3 bg-light opacity-50">
+                    <span class="flex-grow-1 small fw-bold">Sea Salt Soap Bar</span>
+                    <span class="badge bg-danger" style="font-size: 0.6rem;">Out of Stock</span>
+                    <i data-lucide="edit-2" size="14" class="text-muted cursor-pointer"></i>
+                </div>
+            </div>
+            <button class="btn btn-sm btn-outline-primary-custom w-100" onclick="showToast('Feature coming soon!')">
+                <i data-lucide="plus" size="14" class="me-1"></i> Add Item
+            </button>
         </div>
 
         <div class="card card-custom p-4 bg-light border-0">
