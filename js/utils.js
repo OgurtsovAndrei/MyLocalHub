@@ -17,6 +17,12 @@ function showToast(message) {
 function toggleQR() {
     const modal = document.getElementById('qr-modal');
     const qrData = document.getElementById('qr-user-data');
+    const qrTitle = document.getElementById('qr-title');
+    const qrCloseBtn = document.getElementById('qr-close-btn');
+    
+    if (qrTitle) qrTitle.innerText = t('loyalty_qr');
+    if (qrCloseBtn) qrCloseBtn.innerText = t('close');
+    
     qrData.innerText = `User ID: ${USER_DATA.name.toUpperCase()}-${USER_DATA.points}`;
     modal.style.display = 'flex';
 }

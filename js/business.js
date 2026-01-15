@@ -6,47 +6,48 @@ function renderAddBusiness() {
     appContainer.innerHTML = `
         <div class="mb-3">
             <button class="btn btn-link p-0 text-decoration-none text-dark" onclick="renderSection('profile')">
-                <i data-lucide="arrow-left" size="20"></i> Back to Profile
+                <i data-lucide="arrow-left" size="20"></i> ${t('back_to_profile')}
             </button>
         </div>
         <div class="mb-4">
-            <h2 class="fw-bold">Add Your Business</h2>
+            <h2 class="fw-bold">${t('add_your_business')}</h2>
             <p class="text-muted">Fill in the details to list your shop on MyLocalHub</p>
         </div>
         
         <div class="card card-custom p-4">
             <form id="add-business-form" onsubmit="handleBusinessSubmit(event)">
                 <div class="mb-3">
-                    <label class="form-label fw-bold small">Business Name</label>
+                    <label class="form-label fw-bold small">${t('business_name')}</label>
                     <input type="text" class="form-control custom-input" placeholder="e.g., Georgios' Bakery" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label fw-bold small">Category</label>
+                    <label class="form-label fw-bold small">${t('category')}</label>
                     <select class="form-select custom-input" required>
                         <option value="">Select Category</option>
-                        <option value="Food & Drink">Food & Drink</option>
-                        <option value="Crafts">Crafts</option>
-                        <option value="Beauty">Beauty</option>
-                        <option value="Leisure">Leisure</option>
+                        <option value="cat_food_drink">${t('cat_food_drink')}</option>
+                        <option value="cat_crafts">${t('cat_crafts')}</option>
+                        <option value="cat_beauty">${t('cat_beauty')}</option>
+                        <option value="cat_leisure">${t('cat_leisure')}</option>
+                        <option value="cat_souvenirs">${t('cat_souvenirs')}</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label fw-bold small">Description</label>
+                    <label class="form-label fw-bold small">${t('description')}</label>
                     <textarea class="form-control custom-input" rows="3" placeholder="Tell us about your unique shop..." required></textarea>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label fw-bold small">Business Address</label>
+                    <label class="form-label fw-bold small">${t('business_address')}</label>
                     <input type="text" id="business-address" class="form-control custom-input" placeholder="Larnaca, Cyprus" required>
                     <div id="add-business-map" class="mt-2" style="height: 200px; border-radius: 12px; border: 1px solid #E0E0E0; z-index: 1;"></div>
-                    <div class="form-text small mt-1">Tap on the map to pin your exact location.</div>
+                    <div class="form-text small mt-1">${t('map_pin_instruction')}</div>
                 </div>
                 <div class="mb-4">
-                    <label class="form-label fw-bold small">Shop Photo URL</label>
+                    <label class="form-label fw-bold small">${t('shop_photo_url')}</label>
                     <input type="url" class="form-control custom-input" placeholder="https://images.unsplash.com/..." required>
-                    <div class="form-text small">Use a high-quality photo of your shop front or products.</div>
+                    <div class="form-text small">${t('photo_url_instruction')}</div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary-custom">Submit for Review</button>
+                <button type="submit" class="btn btn-primary-custom">${t('submit_review')}</button>
             </form>
         </div>
     `;
@@ -151,18 +152,18 @@ function renderBusinessDashboard() {
     let content = `
         <div class="mb-3">
             <button class="btn btn-link p-0 text-decoration-none text-dark" onclick="renderSection('profile')">
-                <i data-lucide="arrow-left" size="20"></i> Back to Profile
+                <i data-lucide="arrow-left" size="20"></i> ${t('back_to_profile')}
             </button>
         </div>
         <div class="mb-4">
-            <h2 class="fw-bold">Business Dashboard</h2>
+            <h2 class="fw-bold">${t('business_dashboard')}</h2>
             <p class="text-muted">Manage your local presence and community impact</p>
         </div>
 
         <div class="row g-3 mb-4">
             <div class="col-6">
                 <div class="card card-custom p-3 text-center h-100">
-                    <div class="text-muted small mb-1">Total Visits</div>
+                    <div class="text-muted small mb-1">${t('total_visits')}</div>
                     <div class="h3 fw-bold mb-0" style="color: var(--secondary-color)">
                         ${ownedShops.reduce((acc, s) => acc + s.visits, 0)}
                     </div>
@@ -170,7 +171,7 @@ function renderBusinessDashboard() {
             </div>
             <div class="col-6">
                 <div class="card card-custom p-3 text-center h-100">
-                    <div class="text-muted small mb-1">Avg. Rating</div>
+                    <div class="text-muted small mb-1">${t('avg_rating')}</div>
                     <div class="h3 fw-bold mb-0" style="color: var(--gold-color)">
                         ${ownedShops.length > 0 ? (ownedShops.reduce((acc, s) => acc + s.rating, 0) / ownedShops.length).toFixed(1) : '0.0'}
                     </div>
@@ -179,7 +180,7 @@ function renderBusinessDashboard() {
         </div>
 
         <div class="card card-custom p-4 mb-4">
-            <h5 class="fw-bold mb-3 small text-uppercase" style="letter-spacing: 1px; color: var(--metadata-color)">Traffic Insights (Last 7 Days)</h5>
+            <h5 class="fw-bold mb-3 small text-uppercase" style="letter-spacing: 1px; color: var(--metadata-color)">${t('traffic_insights')}</h5>
             <div class="d-flex align-items-end justify-content-between" style="height: 120px; padding: 0 10px;">
                 ${[45, 60, 35, 80, 55, 90, 75].map((val, i) => `
                     <div class="d-flex flex-column align-items-center" style="width: 10%;">
@@ -190,29 +191,31 @@ function renderBusinessDashboard() {
             </div>
         </div>
 
-        <h4 class="fw-bold mb-3">My Businesses</h4>
+        <h4 class="fw-bold mb-3">${t('my_businesses')}</h4>
     `;
 
     if (ownedShops.length === 0) {
         content += `
             <div class="card card-custom p-4 text-center">
                 <p class="text-muted mb-3">You haven't listed any businesses yet.</p>
-                <button class="btn btn-primary-custom" onclick="renderAddBusiness()">Add Your First Business</button>
+                <button class="btn btn-primary-custom" onclick="renderAddBusiness()">${t('add_your_business')}</button>
             </div>
         `;
     } else {
         ownedShops.forEach(shop => {
+            const shopName = getLocalized(shop, 'name');
+            const shopPromo = getLocalized(shop, 'promotion');
             content += `
                 <div class="card card-custom p-3 mb-3">
                     <div class="d-flex align-items-center gap-3">
                         <img src="${shop.image}" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover;">
                         <div class="flex-grow-1">
-                            <h6 class="fw-bold mb-1">${shop.name}</h6>
-                            <p class="small text-muted mb-0">${shop.category} • ${shop.promotion}</p>
+                            <h6 class="fw-bold mb-1">${shopName}</h6>
+                            <p class="small text-muted mb-0">${t(shop.category)} • ${shopPromo}</p>
                         </div>
                         <button class="btn btn-sm btn-outline-primary-custom" onclick="renderShopSetup(${shop.id})">
                             <i data-lucide="settings" size="16"></i>
-                            <span class="button-label">Settings</span>
+                            <span class="button-label">${t('settings')}</span>
                         </button>
                     </div>
                 </div>
@@ -220,7 +223,7 @@ function renderBusinessDashboard() {
         });
         content += `
             <button class="btn btn-outline-secondary w-100 mt-2" style="border-radius: 12px; padding: 12px" onclick="renderAddBusiness()">
-                <i data-lucide="plus" size="18" class="me-2"></i> Add Another Business
+                <i data-lucide="plus" size="18" class="me-2"></i> ${t('add_another_business')}
             </button>
         `;
     }
@@ -233,66 +236,69 @@ function renderBusinessDashboard() {
 function renderShopSetup(shopId) {
     const shop = SHOPS_DATA.find(s => s.id === shopId);
     const appContainer = document.getElementById('app-content');
+    const shopName = getLocalized(shop, 'name');
+    const shopPromo = getLocalized(shop, 'promotion');
+    const shopDesc = getLocalized(shop, 'description');
     
     appContainer.innerHTML = `
         <div class="mb-3">
             <button class="btn btn-link p-0 text-decoration-none text-dark" onclick="renderBusinessDashboard()">
-                <i data-lucide="arrow-left" size="20"></i> Back to Dashboard
+                <i data-lucide="arrow-left" size="20"></i> ${t('back_to_dashboard')}
             </button>
         </div>
         <div class="mb-4">
-            <h2 class="fw-bold">Business Setup</h2>
-            <p class="text-muted">Configure ${shop.name} for the community</p>
+            <h2 class="fw-bold">${t('business_setup')}</h2>
+            <p class="text-muted">${t('configure_business', { name: shopName })}</p>
         </div>
 
         <div class="card card-custom p-4 mb-4">
-            <h5 class="fw-bold mb-3">Active Promotion</h5>
+            <h5 class="fw-bold mb-3">${t('active_promotion')}</h5>
             <div class="mb-3">
-                <label class="form-label fw-bold small">Promotion Text</label>
-                <input type="text" id="promo-input" class="form-control custom-input" value="${shop.promotion}" placeholder="e.g., -20% on all crafts">
+                <label class="form-label fw-bold small">${t('promotion_text')}</label>
+                <input type="text" id="promo-input" class="form-control custom-input" value="${shopPromo}" placeholder="e.g., -20% on all crafts">
             </div>
-            <button class="btn btn-primary-custom" onclick="updatePromotion(${shop.id})">Update Promotion</button>
+            <button class="btn btn-primary-custom" onclick="updatePromotion(${shop.id})">${t('update_promotion')}</button>
         </div>
 
         <div class="card card-custom p-4 mb-4">
-            <h5 class="fw-bold mb-3">Business Details</h5>
+            <h5 class="fw-bold mb-3">${t('business_details')}</h5>
             <div class="mb-3">
-                <label class="form-label fw-bold small">Description</label>
-                <textarea id="desc-input" class="form-control custom-input" rows="3">${shop.description}</textarea>
+                <label class="form-label fw-bold small">${t('description')}</label>
+                <textarea id="desc-input" class="form-control custom-input" rows="3">${shopDesc}</textarea>
             </div>
-            <button class="btn btn-outline-primary-custom w-100" onclick="updateDetails(${shop.id})">Save Details</button>
+            <button class="btn btn-outline-primary-custom w-100" onclick="updateDetails(${shop.id})">${t('save_details')}</button>
         </div>
 
         <div class="card card-custom p-4 mb-4">
-            <h5 class="fw-bold mb-3">Inventory Management</h5>
+            <h5 class="fw-bold mb-3">${t('inventory_management')}</h5>
             <div class="mb-3">
-                <label class="form-label fw-bold small">Today's Specials / Key Items</label>
+                <label class="form-label fw-bold small">${t('specials_items')}</label>
                 <div class="d-flex align-items-center gap-2 mb-2 p-2 rounded-3 bg-light">
                     <span class="flex-grow-1 small fw-bold">Handmade Shell Necklace</span>
-                    <span class="badge bg-success" style="font-size: 0.6rem;">In Stock</span>
+                    <span class="badge bg-success" style="font-size: 0.6rem;">${t('in_stock')}</span>
                     <i data-lucide="edit-2" size="14" class="text-muted cursor-pointer"></i>
                 </div>
                 <div class="d-flex align-items-center gap-2 mb-2 p-2 rounded-3 bg-light">
                     <span class="flex-grow-1 small fw-bold">Larnaca Postcards Set</span>
-                    <span class="badge bg-success" style="font-size: 0.6rem;">In Stock</span>
+                    <span class="badge bg-success" style="font-size: 0.6rem;">${t('in_stock')}</span>
                     <i data-lucide="edit-2" size="14" class="text-muted cursor-pointer"></i>
                 </div>
                 <div class="d-flex align-items-center gap-2 mb-2 p-2 rounded-3 bg-light opacity-50">
                     <span class="flex-grow-1 small fw-bold">Sea Salt Soap Bar</span>
-                    <span class="badge bg-danger" style="font-size: 0.6rem;">Out of Stock</span>
+                    <span class="badge bg-danger" style="font-size: 0.6rem;">${t('out_of_stock')}</span>
                     <i data-lucide="edit-2" size="14" class="text-muted cursor-pointer"></i>
                 </div>
             </div>
             <button class="btn btn-sm btn-outline-primary-custom w-100" onclick="showToast('Feature coming soon!')">
-                <i data-lucide="plus" size="14" class="me-1"></i> Add Item
+                <i data-lucide="plus" size="14" class="me-1"></i> ${t('add_item')}
             </button>
         </div>
 
         <div class="card card-custom p-4 bg-light border-0">
-            <h5 class="fw-bold mb-3">Marketing Insights</h5>
-            <p class="small text-muted mb-3">Boost your reach by joining community events.</p>
+            <h5 class="fw-bold mb-3">${t('marketing_insights')}</h5>
+            <p class="small text-muted mb-3">${t('marketing_subtitle')}</p>
             <button class="btn btn-secondary-custom w-100" style="background-color: var(--secondary-color); color: #fff; border-radius: 12px; padding: 12px; border: none;" onclick="renderSection('explore')">
-                Browse Community Events
+                ${t('browse_events')}
             </button>
         </div>
     `;
@@ -304,8 +310,12 @@ window.updatePromotion = function(shopId) {
     const input = document.getElementById('promo-input');
     const shop = SHOPS_DATA.find(s => s.id === shopId);
     if (shop && input) {
-        shop.promotion = input.value;
-        showToast('Promotion updated!');
+        // Update current language promotion
+        const lang = USER_DATA.language || 'en';
+        shop[`promotion_${lang}`] = input.value;
+        if (lang === 'en') shop.promotion = input.value;
+        
+        showToast(t('promotion_updated'));
         confetti({
             particleCount: 50,
             spread: 50,
@@ -319,7 +329,11 @@ window.updateDetails = function(shopId) {
     const input = document.getElementById('desc-input');
     const shop = SHOPS_DATA.find(s => s.id === shopId);
     if (shop && input) {
-        shop.description = input.value;
-        showToast('Details saved!');
+        // Update current language description
+        const lang = USER_DATA.language || 'en';
+        shop[`description_${lang}`] = input.value;
+        if (lang === 'en') shop.description = input.value;
+        
+        showToast(t('details_saved'));
     }
 };

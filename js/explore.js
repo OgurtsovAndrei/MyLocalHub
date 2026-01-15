@@ -2,8 +2,8 @@ let currentViewMode = 'list';
 let mapInstance = null;
 let markersMap = {};
 let currentDateFilter = null;
-let currentFilter = 'All';
-let currentTypeFilter = 'All';
+let currentFilter = 'all';
+let currentTypeFilter = 'all';
 let currentDetailItem = null; // { type, id }
 
 // Global hook for calendar month change
@@ -25,7 +25,7 @@ function setViewMode(mode) {
 }
 
 function handleCalendarClick() {
-    if (currentTypeFilter === 'All') {
+    if (currentTypeFilter === 'all') {
         currentTypeFilter = 'event';
     }
     setViewMode('calendar');
@@ -39,7 +39,7 @@ function closeDetail() {
     }
 }
 
-function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter = null, calendarViewDate = null) {
+function renderExplore(container, filter = 'all', typeFilter = 'all', dateFilter = null, calendarViewDate = null) {
     currentFilter = filter;
     currentTypeFilter = typeFilter;
     currentDateFilter = dateFilter;
@@ -52,54 +52,56 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
     const allData = [...SHOPS_DATA, ...EVENTS_DATA];
     
     // Dynamic categories based on current type filter
-    let categories = ['All'];
-    if (typeFilter === 'place') {
+    let categories = ['all'];
+    if (typeFilter === 'all') {
+        categories.push(...new Set(allData.map(i => i.category)));
+    } else if (typeFilter === 'place') {
         categories.push(...new Set(SHOPS_DATA.map(s => s.category)));
     } else if (typeFilter === 'event') {
         categories.push(...new Set(EVENTS_DATA.map(e => e.category)));
-    } else {
-        categories.push(...new Set(allData.map(i => i.category)));
+    } else if (typeFilter === 'new') {
+        categories.push(...new Set(allData.filter(i => i.isNew).map(i => i.category)));
     }
     
     const header = `
         <div class="mb-4">
-            <h2 class="fw-bold">Hello, ${USER_DATA.name}!</h2>
-            <p class="text-muted mb-0">Explore your local community</p>
+            <h2 class="fw-bold">${t('welcome', { name: USER_DATA.name })}</h2>
+            <p class="text-muted mb-0">${t('explore_subtitle')}</p>
         </div>
         
         <div class="d-flex align-items-center mb-4 gap-2">
-            <button class="btn-map-toggle ${currentViewMode === 'map' ? 'active' : ''}" onclick="setViewMode('map')" title="Toggle Map">
+            <button class="btn-map-toggle ${currentViewMode === 'map' ? 'active' : ''}" onclick="setViewMode('map')" title="${t('map')}">
                 <i data-lucide="map"></i>
-                <span class="button-label">Map</span>
+                <span class="button-label">${t('map')}</span>
             </button>
-            ${(typeFilter === 'event' || typeFilter === 'All') ? `
-            <button class="btn-map-toggle ${currentViewMode === 'calendar' ? 'active' : ''}" onclick="handleCalendarClick()" title="Toggle Calendar">
+            ${(typeFilter === 'event' || typeFilter === 'all') ? `
+            <button class="btn-map-toggle ${currentViewMode === 'calendar' ? 'active' : ''}" onclick="handleCalendarClick()" title="${t('calendar')}">
                 <i data-lucide="calendar"></i>
-                <span class="button-label">Calendar</span>
+                <span class="button-label">${t('calendar')}</span>
             </button>
             ` : ''}
             <div class="search-bar mb-0 flex-grow-1">
                 <i data-lucide="search" size="20"></i>
-                <input type="text" placeholder="Search places or events...">
-                <i data-lucide="mic" size="20" class="text-muted cursor-pointer ms-2" onclick="showToast('Voice Search active... Listening')"></i>
+                <input type="text" placeholder="${t('search_placeholder')}">
+                <i data-lucide="mic" size="20" class="text-muted cursor-pointer ms-2" onclick="showToast(t('voice_search_active'))"></i>
             </div>
         </div>
 
         <div class="d-flex gap-2 mb-3">
-            <button class="btn btn-sm ${typeFilter === 'All' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'All')">All</button>
-            <button class="btn btn-sm ${typeFilter === 'place' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'place')">Places</button>
-            <button class="btn btn-sm ${typeFilter === 'event' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'event')">Events</button>
-            <button class="btn btn-sm ${typeFilter === 'new' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'new')">New</button>
+            <button class="btn btn-sm ${typeFilter === 'all' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'all', 'all')">${t('all')}</button>
+            <button class="btn btn-sm ${typeFilter === 'place' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'all', 'place')">${t('places')}</button>
+            <button class="btn btn-sm ${typeFilter === 'event' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'all', 'event')">${t('events')}</button>
+            <button class="btn btn-sm ${typeFilter === 'new' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'all', 'new')">${t('new')}</button>
         </div>
 
         <div class="category-scroll mb-4">
             ${categories.map(cat => `
-                <div class="category-item ${filter === cat ? 'active' : ''}" onclick="renderExplore(document.getElementById('app-content'), '${cat}', '${typeFilter}')">${cat}</div>
+                <div class="category-item ${filter === cat ? 'active' : ''}" onclick="renderExplore(document.getElementById('app-content'), '${cat}', '${typeFilter}')">${t(cat)}</div>
             `).join('')}
         </div>
         <h4 class="fw-bold mb-3">
-            ${dateFilter ? `Events on ${dateFilter.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}` : 
-              (filter === 'All' ? (typeFilter === 'All' ? 'Everything' : (typeFilter === 'place' ? 'Featured Places' : 'Upcoming Events')) : filter)}
+            ${dateFilter ? t('events_on', { date: dateFilter.toLocaleDateString(USER_DATA.language === 'el' ? 'el-GR' : (USER_DATA.language === 'ru' ? 'ru-RU' : 'en-US'), { month: 'short', day: 'numeric', year: 'numeric' }) }) : 
+              (filter === 'all' ? (typeFilter === 'all' ? t('everything') : (typeFilter === 'place' ? t('featured_places') : t('upcoming_events'))) : t(filter))}
         </h4>
     `;
     container.innerHTML = header;
@@ -107,10 +109,10 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
     let filteredItems = allData;
     if (typeFilter === 'new') {
         filteredItems = filteredItems.filter(item => item.isNew);
-    } else if (typeFilter !== 'All') {
+    } else if (typeFilter !== 'all') {
         filteredItems = filteredItems.filter(item => item.type === typeFilter);
     }
-    if (filter !== 'All') {
+    if (filter !== 'all') {
         filteredItems = filteredItems.filter(item => item.category === filter);
     }
     if (dateFilter && typeFilter === 'event') {
@@ -250,8 +252,8 @@ function renderItems(container, items) {
         container.innerHTML = `
             <div class="text-center my-5 animate__animated animate__fadeIn w-100">
                 <i data-lucide="info" size="48" class="text-muted mb-3"></i>
-                <p class="text-muted">No results found for this selection.</p>
-                <button class="btn btn-link text-accent" onclick="renderExplore(document.getElementById('app-content'), 'All', 'All')">Reset filters</button>
+                <p class="text-muted">${t('no_results')}</p>
+                <button class="btn btn-link text-accent" onclick="renderExplore(document.getElementById('app-content'), 'all', 'all')">${t('reset_filters')}</button>
             </div>
         `;
     } else {
@@ -259,30 +261,33 @@ function renderItems(container, items) {
             const isPlace = item.type === 'place';
             const cardId = `item-card-${item.type}-${item.id}`;
             const visitedToday = Math.floor(Math.random() * 15) + 3; 
+            const itemName = getLocalized(item, isPlace ? 'name' : 'title');
+            const itemPromo = getLocalized(item, 'promotion');
+            const itemLocation = getLocalized(item, 'location');
             const card = `
                 <div class="card card-custom ${!isPlace ? 'event-card' : ''} animate__animated animate__fadeIn" id="${cardId}" onclick="handleItemClick('${item.type}', ${item.id}, event)" style="cursor: pointer">
-                    <img src="${item.image}" class="card-img-top" alt="${isPlace ? item.name : item.title}">
-                    ${item.isNew ? '<span class="badge bg-success position-absolute m-2" style="top: 0; right: 0; border-radius: 8px; font-size: 0.7rem;">NEW</span>' : ''}
+                    <img src="${item.image}" class="card-img-top" alt="${itemName}">
+                    ${item.isNew ? `<span class="badge bg-success position-absolute m-2" style="top: 0; right: 0; border-radius: 8px; font-size: 0.7rem;">${t('new')}</span>` : ''}
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h5 class="card-title fw-bold mb-0">${isPlace ? item.name : item.title}</h5>
-                            ${isPlace ? `<span class="promo-badge">${item.promotion}</span>` : `<span class="badge" style="background-color: var(--secondary-color); color: #fff; border-radius: 20px; font-size: 0.7rem;">${item.category}</span>`}
+                            <h5 class="card-title fw-bold mb-0">${itemName}</h5>
+                            ${isPlace ? `<span class="promo-badge">${itemPromo}</span>` : `<span class="badge" style="background-color: var(--secondary-color); color: #fff; border-radius: 20px; font-size: 0.7rem;">${t(item.category)}</span>`}
                         </div>
                         <p class="text-muted small mb-2">
-                            ${isPlace ? `${item.category} • ★ ${item.rating}` : `<i data-lucide="calendar" size="14" class="d-inline"></i> ${item.date}`}
+                            ${isPlace ? `${t(item.category)} • ★ ${item.rating}` : `<i data-lucide="calendar" size="14" class="d-inline"></i> ${item.date}`}
                             • <span class="text-accent fw-bold">${formatDistance(item.distance)}</span>
                         </p>
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <p class="small text-secondary mb-0">
-                                ${isPlace ? `<i data-lucide="users" size="14" class="d-inline"></i> ${item.visits} visits` : `<i data-lucide="map-pin" size="14" class="d-inline"></i> ${item.location}`}
+                                ${isPlace ? `<i data-lucide="users" size="14" class="d-inline"></i> ${item.visits} ${t('visits')}` : `<i data-lucide="map-pin" size="14" class="d-inline"></i> ${itemLocation}`}
                             </p>
                             ${isPlace ? `
                             <p class="small text-accent fw-bold mb-0 animate__animated animate__pulse animate__infinite" style="font-size: 0.7rem;">
-                                <i data-lucide="footprints" size="12"></i> ${visitedToday} visited today
+                                <i data-lucide="footprints" size="12"></i> ${visitedToday} ${t('visited_today')}
                             </p>` : ''}
                         </div>
                         <button class="btn btn-primary-custom" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showEventDetail(${item.id})`}">
-                            ${isPlace ? 'View Place' : 'View Event'}
+                            ${isPlace ? t('view_place') : t('view_event')}
                         </button>
                     </div>
                 </div>
@@ -331,11 +336,11 @@ function highlightItemInList(type, id, scroll = false) {
 
 function getCategoryIcon(category) {
     const iconMap = {
-        'Food & Drink': 'utensils',
-        'Crafts': 'scissors',
-        'Beauty': 'sparkles',
-        'Leisure': 'palmtree',
-        'Souvenirs': 'gift',
+        'cat_food_drink': 'utensils',
+        'cat_crafts': 'scissors',
+        'cat_beauty': 'sparkles',
+        'cat_leisure': 'palmtree',
+        'cat_souvenirs': 'gift',
         'default': 'map-pin'
     };
     return iconMap[category] || iconMap['default'];
@@ -376,17 +381,19 @@ function initMap(items) {
                 iconAnchor: [17, 34]
             });
 
+            const itemName = getLocalized(item, isPlace ? 'name' : 'title');
+            const itemPromo = getLocalized(item, 'promotion');
             const popupContent = `
                 <div class="map-popup-card">
-                    <img src="${item.image}" alt="${isPlace ? item.name : item.title}">
+                    <img src="${item.image}" alt="${itemName}">
                     <div class="map-popup-content">
-                        <h6 class="fw-bold mb-1">${isPlace ? item.name : item.title}</h6>
+                        <h6 class="fw-bold mb-1">${itemName}</h6>
                         <p class="small text-muted mb-2">
-                            ${isPlace ? `${item.category} • ★ ${item.rating}` : `<i data-lucide="calendar" size="12"></i> ${item.date}`}
+                            ${isPlace ? `${t(item.category)} • ★ ${item.rating}` : `<i data-lucide="calendar" size="12"></i> ${item.date}`}
                             • <span class="text-accent fw-bold">${formatDistance(item.distance)}</span>
                         </p>
                         <button class="btn btn-primary-custom btn-sm py-1" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showEventDetail(${item.id})`}">
-                            View Details
+                            ${t('view_details')}
                         </button>
                     </div>
                 </div>

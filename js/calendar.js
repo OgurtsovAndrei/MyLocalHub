@@ -4,10 +4,6 @@ const Calendar = {
         const month = now.getMonth();
         const year = now.getFullYear();
 
-        const monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
-
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
@@ -22,22 +18,22 @@ const Calendar = {
                 <div class="calendar-header">
                     <button onclick="Calendar.changeMonth(-1)" class="btn-cal-nav">
                         <i data-lucide="chevron-left"></i>
-                        <span class="button-label">Prev</span>
+                        <span class="button-label">${t('prev')}</span>
                     </button>
-                    <h5 class="fw-bold mb-0">${monthNames[month]} ${year}</h5>
+                    <h5 class="fw-bold mb-0">${t('month_' + month)} ${year}</h5>
                     <button onclick="Calendar.changeMonth(1)" class="btn-cal-nav">
                         <i data-lucide="chevron-right"></i>
-                        <span class="button-label">Next</span>
+                        <span class="button-label">${t('next')}</span>
                     </button>
                 </div>
                 <div class="calendar-grid">
-                    <div class="calendar-day-label">Sun</div>
-                    <div class="calendar-day-label">Mon</div>
-                    <div class="calendar-day-label">Tue</div>
-                    <div class="calendar-day-label">Wed</div>
-                    <div class="calendar-day-label">Thu</div>
-                    <div class="calendar-day-label">Fri</div>
-                    <div class="calendar-day-label">Sat</div>
+                    <div class="calendar-day-label">${t('day_0')}</div>
+                    <div class="calendar-day-label">${t('day_1')}</div>
+                    <div class="calendar-day-label">${t('day_2')}</div>
+                    <div class="calendar-day-label">${t('day_3')}</div>
+                    <div class="calendar-day-label">${t('day_4')}</div>
+                    <div class="calendar-day-label">${t('day_5')}</div>
+                    <div class="calendar-day-label">${t('day_6')}</div>
         `;
 
         // Empty slots for first week
@@ -73,7 +69,7 @@ const Calendar = {
                 </div>
                 ${selectedDate ? `
                     <div class="text-center mt-3">
-                        <button class="btn btn-sm btn-link text-accent p-0" onclick="Calendar.clearFilter()">Clear Date Filter</button>
+                        <button class="btn btn-sm btn-link text-accent p-0" onclick="Calendar.clearFilter()">${t('clear_filter')}</button>
                     </div>
                 ` : ''}
             </div>
@@ -112,8 +108,8 @@ const Calendar = {
                 <div class="event-preview-item">
                     <img src="${e.image}" class="event-preview-img">
                     <div class="event-preview-info">
-                        <h6>${e.title}</h6>
-                        <p>${e.location}</p>
+                        <h6>${getLocalized(e, 'title')}</h6>
+                        <p>${getLocalized(e, 'location')}</p>
                     </div>
                 </div>
             `;

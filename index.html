@@ -34,12 +34,12 @@
 
     <div id="qr-modal" class="qr-modal" onclick="closeQR()">
         <div class="qr-content" onclick="event.stopPropagation()">
-            <h4 class="fw-bold mb-4">Your Loyalty QR</h4>
+            <h4 class="fw-bold mb-4" id="qr-title">Your Loyalty QR</h4>
             <div class="bg-light p-4 rounded-4 mb-4">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=MyLocalHubUser" alt="QR Code" class="img-fluid">
             </div>
             <p id="qr-user-data" class="small text-muted mb-4"></p>
-            <button class="btn btn-primary-custom" onclick="closeQR()">Close</button>
+            <button class="btn btn-primary-custom" id="qr-close-btn" onclick="closeQR()">Close</button>
         </div>
     </div>
 
@@ -51,6 +51,7 @@
     <script src="js/mocks/shops.js"></script>
     <script src="js/mocks/events.js"></script>
     <script src="js/mocks/user.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/shop-detail.js"></script>

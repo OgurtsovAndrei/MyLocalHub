@@ -1,5 +1,6 @@
 const USER_DATA = {
     name: "Andrew",
+    language: "en",
     points: 480,
     badges: [
         { id: 1, name: "Local Hero", icon: "shield-check" },
