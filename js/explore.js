@@ -88,6 +88,7 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
             <button class="btn btn-sm ${typeFilter === 'All' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'All')">All</button>
             <button class="btn btn-sm ${typeFilter === 'place' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'place')">Places</button>
             <button class="btn btn-sm ${typeFilter === 'event' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'event')">Events</button>
+            <button class="btn btn-sm ${typeFilter === 'new' ? 'btn-accent-active' : 'btn-outline-custom'}" onclick="renderExplore(document.getElementById('app-content'), 'All', 'new')">New</button>
         </div>
 
         <div class="category-scroll mb-4">
@@ -103,7 +104,9 @@ function renderExplore(container, filter = 'All', typeFilter = 'All', dateFilter
     container.innerHTML = header;
 
     let filteredItems = allData;
-    if (typeFilter !== 'All') {
+    if (typeFilter === 'new') {
+        filteredItems = filteredItems.filter(item => item.isNew);
+    } else if (typeFilter !== 'All') {
         filteredItems = filteredItems.filter(item => item.type === typeFilter);
     }
     if (filter !== 'All') {
@@ -254,9 +257,11 @@ function renderItems(container, items) {
         items.forEach(item => {
             const isPlace = item.type === 'place';
             const cardId = `item-card-${item.type}-${item.id}`;
+            const lookingNow = Math.floor(Math.random() * 5) + 2; 
             const card = `
                 <div class="card card-custom ${!isPlace ? 'event-card' : ''} animate__animated animate__fadeIn" id="${cardId}" onclick="handleItemClick('${item.type}', ${item.id}, event)" style="cursor: pointer">
                     <img src="${item.image}" class="card-img-top" alt="${isPlace ? item.name : item.title}">
+                    ${item.isNew ? '<span class="badge bg-success position-absolute m-2" style="top: 0; right: 0; border-radius: 8px; font-size: 0.7rem;">NEW</span>' : ''}
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-start mb-2">
                             <h5 class="card-title fw-bold mb-0">${isPlace ? item.name : item.title}</h5>
@@ -266,9 +271,15 @@ function renderItems(container, items) {
                             ${isPlace ? `${item.category} • ★ ${item.rating}` : `<i data-lucide="calendar" size="14" class="d-inline"></i> ${item.date}`}
                             • <span class="text-accent fw-bold">${formatDistance(item.distance)}</span>
                         </p>
-                        <p class="small text-secondary mb-3">
-                            ${isPlace ? `${item.visits} people visited this week` : `<i data-lucide="map-pin" size="14" class="d-inline"></i> ${item.location}`}
-                        </p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <p class="small text-secondary mb-0">
+                                ${isPlace ? `<i data-lucide="users" size="14" class="d-inline"></i> ${item.visits} visits` : `<i data-lucide="map-pin" size="14" class="d-inline"></i> ${item.location}`}
+                            </p>
+                            ${isPlace ? `
+                            <p class="small text-accent fw-bold mb-0 animate__animated animate__pulse animate__infinite" style="font-size: 0.7rem;">
+                                <i data-lucide="eye" size="12"></i> ${lookingNow} looking now
+                            </p>` : ''}
+                        </div>
                         <button class="btn btn-primary-custom" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showEventDetail(${item.id})`}">
                             ${isPlace ? 'View Place' : 'View Event'}
                         </button>
