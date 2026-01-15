@@ -258,7 +258,7 @@ function renderItems(container, items) {
         items.forEach(item => {
             const isPlace = item.type === 'place';
             const cardId = `item-card-${item.type}-${item.id}`;
-            const lookingNow = Math.floor(Math.random() * 5) + 2; 
+            const visitedToday = Math.floor(Math.random() * 15) + 3; 
             const card = `
                 <div class="card card-custom ${!isPlace ? 'event-card' : ''} animate__animated animate__fadeIn" id="${cardId}" onclick="handleItemClick('${item.type}', ${item.id}, event)" style="cursor: pointer">
                     <img src="${item.image}" class="card-img-top" alt="${isPlace ? item.name : item.title}">
@@ -278,7 +278,7 @@ function renderItems(container, items) {
                             </p>
                             ${isPlace ? `
                             <p class="small text-accent fw-bold mb-0 animate__animated animate__pulse animate__infinite" style="font-size: 0.7rem;">
-                                <i data-lucide="eye" size="12"></i> ${lookingNow} looking now
+                                <i data-lucide="footprints" size="12"></i> ${visitedToday} visited today
                             </p>` : ''}
                         </div>
                         <button class="btn btn-primary-custom" style="${!isPlace ? 'background-color: var(--secondary-color)' : ''}" onclick="${isPlace ? `showShopDetail(${item.id})` : `showEventDetail(${item.id})`}">
